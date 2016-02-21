@@ -628,8 +628,8 @@ public func unpackDouble2x32 (v:Double) -> uvec2 {
 
 @warn_unused_result
 public func packHalf2x16 (v:vec2) -> UInt32 {
-    var ret:UInt32 = UInt32(GLmath.halfFromFloat(v[0]))
-    ret += UInt32(GLmath.halfFromFloat(v[1])) << 16
+    var ret:UInt32 = UInt32(SGLMath.halfFromFloat(v[0]))
+    ret += UInt32(SGLMath.halfFromFloat(v[1])) << 16
     return ret
 }
 

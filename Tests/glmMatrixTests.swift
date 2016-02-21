@@ -21,7 +21,7 @@
 
 
 import XCTest
-import SwiftGLmath
+import SGLMath
 
 class SwiftGLglmTests: XCTestCase {
 
@@ -36,7 +36,7 @@ class SwiftGLglmTests: XCTestCase {
 
         translate(m4, v3)
         rotate(m4, 1.1, v3)
-        rotate_slow(m4, 1.1, v3)
+        rotateSlow(m4, 1.1, v3)
         scale(m4, v3)
 
         ortho(1,2,3,4,5,6)

@@ -21,7 +21,7 @@
 
 
 import XCTest
-import SwiftGLmath
+import SGLMath
 
 class Vector2Tests: XCTestCase {
 

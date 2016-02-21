@@ -126,9 +126,9 @@ func writer(filename:String, _ generator:(outstream:NSOutputStream) -> Void)
     outstream.close()
 }
 
+// Got error from Xcode? Add $(SRCROOT)/Math to arguments in scheme.
 
 if (Process.argc != 2) {
-    // Got this from Xcode? Add $(SRCROOT) to arguments in scheme.
     print("\nusage: main.swift path_to_root\n")
     exit(1)
 }

@@ -21,7 +21,7 @@
 
 
 import XCTest
-import SwiftGLmath
+import SGLMath
 
 
 func XCTAssertEqualWithAccuracy<T: FloatingPointType>(@autoclosure expression1: () -> Vector2<T>, @autoclosure _ expression2: () -> Vector2<T>, accuracy: T, _ message: String = "", file: String = __FILE__, line: UInt = __LINE__)

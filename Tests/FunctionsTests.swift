@@ -7,7 +7,7 @@
 //
 
 import XCTest
-import SwiftGLmath
+import SGLMath
 
 class FunctionsTests: XCTestCase {
 
