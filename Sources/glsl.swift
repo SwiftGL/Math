@@ -102,105 +102,105 @@ public func degrees<genType:VectorType where
 public func sin<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(angle:genType) -> genType {
-    return genType(angle, SGLMath.GLsin)
+    return genType(angle, SGLMath.SGLsin)
 }
 
 @warn_unused_result
 public func cos<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(angle:genType) -> genType {
-    return genType(angle, SGLMath.GLcos)
+    return genType(angle, SGLMath.SGLcos)
 }
 
 @warn_unused_result
 public func tan<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(angle:genType) -> genType {
-    return genType(angle, SGLMath.GLtan)
+    return genType(angle, SGLMath.SGLtan)
 }
 
 @warn_unused_result
 public func asin<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLasin)
+    return genType(x, SGLMath.SGLasin)
 }
 
 @warn_unused_result
 public func acos<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLacos)
+    return genType(x, SGLMath.SGLacos)
 }
 
 @warn_unused_result
 public func atan<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(y:genType.Element, _ x:genType) -> genType {
-    return genType(y, x, SGLMath.GLatan)
+    return genType(y, x, SGLMath.SGLatan)
 }
 
 @warn_unused_result
 public func atan<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(y:genType, _ x:genType.Element) -> genType {
-    return genType(y, x, SGLMath.GLatan)
+    return genType(y, x, SGLMath.SGLatan)
 }
 
 @warn_unused_result
 public func atan<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(y:genType, _ x:genType) -> genType {
-    return genType(y, x, SGLMath.GLatan)
+    return genType(y, x, SGLMath.SGLatan)
 }
 
 @warn_unused_result
 public func atan<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(yoverx:genType) -> genType {
-    return genType(yoverx, SGLMath.GLatan)
+    return genType(yoverx, SGLMath.SGLatan)
 }
 
 @warn_unused_result
 public func sinh<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLsinh)
+    return genType(x, SGLMath.SGLsinh)
 }
 
 @warn_unused_result
 public func cosh<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLcosh)
+    return genType(x, SGLMath.SGLcosh)
 }
 
 @warn_unused_result
 public func tanh<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLtanh)
+    return genType(x, SGLMath.SGLtanh)
 }
 
 @warn_unused_result
 public func asinh<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLasinh)
+    return genType(x, SGLMath.SGLasinh)
 }
 
 @warn_unused_result
 public func acosh<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLacosh)
+    return genType(x, SGLMath.SGLacosh)
 }
 
 @warn_unused_result
 public func atanh<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLatanh)
+    return genType(x, SGLMath.SGLatanh)
 }
 
 
@@ -210,49 +210,49 @@ public func atanh<genType:VectorType where
 public func pow<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType, _ y:genType) -> genType {
-    return genType(x, y, SGLMath.GLpow)
+    return genType(x, y, SGLMath.SGLpow)
 }
 
 @warn_unused_result
 public func exp<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLexp)
+    return genType(x, SGLMath.SGLexp)
 }
 
 @warn_unused_result
 public func log<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLlog)
+    return genType(x, SGLMath.SGLlog)
 }
 
 @warn_unused_result
 public func exp2<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLexp2)
+    return genType(x, SGLMath.SGLexp2)
 }
 
 @warn_unused_result
 public func log2<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLlog2)
+    return genType(x, SGLMath.SGLlog2)
 }
 
 @warn_unused_result
 public func sqrt<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLsqrt)
+    return genType(x, SGLMath.SGLsqrt)
 }
 
 @warn_unused_result
 public func inversesqrt<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x) { 1 / SGLMath.GLsqrt($0) }
+    return genType(x) { 1 / SGLMath.SGLsqrt($0) }
 }
 
 
@@ -276,28 +276,28 @@ public func sign<genType:VectorType where
 public func floor<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLfloor)
+    return genType(x, SGLMath.SGLfloor)
 }
 
 @warn_unused_result
 public func trunc<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLtrunc)
+    return genType(x, SGLMath.SGLtrunc)
 }
 
 @warn_unused_result
 public func round<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLround)
+    return genType(x, SGLMath.SGLround)
 }
 
 private func roundEven<T:FloatingPointArithmeticType>(x:T) -> T {
     var int:T = 0
-    let frac:T = SGLMath.GLmodf(x, &int);
+    let frac:T = SGLMath.SGLmodf(x, &int);
     if frac != T(0.5) && frac != T(-0.5) {
-        return SGLMath.GLround(x);
+        return SGLMath.SGLround(x);
     }
     if int % 2 == 0 {
         return int
@@ -316,7 +316,7 @@ public func roundEven<genType:VectorType where
 public func ceil<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType {
-    return genType(x, SGLMath.GLceil)
+    return genType(x, SGLMath.SGLceil)
 }
 
 @warn_unused_result
@@ -350,7 +350,7 @@ public func mod<genType:VectorType>
 public func modf<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType, inout _ i:genType) -> genType {
-    return genType(x, &i, SGLMath.GLmodf)
+    return genType(x, &i, SGLMath.SGLmodf)
 }
 
 @warn_unused_result
@@ -513,7 +513,7 @@ public func uintBitsToFloat<genType:VectorType where
 public func fma<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(a:genType, _ b:genType, _ c:genType) -> genType {
-    return genType(a, b, c, SGLMath.GLfma)
+    return genType(a, b, c, SGLMath.SGLfma)
 }
 
 @warn_unused_result
@@ -522,7 +522,7 @@ public func frexp<genType:VectorType, genIType:VectorType where
     genIType.Element == Int32,
     genType.BooleanVector == genIType.BooleanVector
     >(x:genType, inout _ exp:genIType) -> genType {
-        return genType(x, &exp, SGLMath.GLfrexp)
+        return genType(x, &exp, SGLMath.SGLfrexp)
 }
 
 @warn_unused_result
@@ -531,7 +531,7 @@ public func ldexp<genType:VectorType, genIType:VectorType where
     genIType.Element == Int32,
     genType.BooleanVector == genIType.BooleanVector
     >(x:genType, _ exp:genIType) -> genType {
-        return genType(x, exp, SGLMath.GLldexp)
+        return genType(x, exp, SGLMath.SGLldexp)
 }
 
 
@@ -648,7 +648,7 @@ public func unpackHalf2x16 (v:UInt32) -> vec2 {
 public func length<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
     >(x:genType) -> genType.Element {
-    return SGLMath.GLsqrt(dot(x, x))
+    return SGLMath.SGLsqrt(dot(x, x))
 }
 
 @warn_unused_result
@@ -729,7 +729,7 @@ public func refract<genType:VectorType where
     k = eta * eta * k
     k = 1 - k
     if (k < 0) { return genType() }
-    let x = eta * dotni + SGLMath.GLsqrt(k)
+    let x = eta * dotni + SGLMath.SGLsqrt(k)
     let r = x * n
     return eta * i - r
 }

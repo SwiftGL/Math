@@ -115,17 +115,17 @@ public struct Complex<T:FloatingPointArithmeticType> : MatrixType, FloatLiteralC
 
     // Init from polar components
     public init(rho:T, theta:T) {
-        self.real = rho * SGLMath.GLcos(theta)
-        self.imag = rho * SGLMath.GLsin(theta)
+        self.real = rho * SGLMath.SGLcos(theta)
+        self.imag = rho * SGLMath.SGLsin(theta)
 
     }
 
     public var abs:T {
-        return SGLMath.GLsqrt(real * real + imag * imag)
+        return SGLMath.SGLsqrt(real * real + imag * imag)
     }
 
     public var arg:T {
-        return SGLMath.GLatan(imag, real)
+        return SGLMath.SGLatan(imag, real)
     }
 
     public var norm:T {
