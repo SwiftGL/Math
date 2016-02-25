@@ -110,7 +110,7 @@ public protocol VectorType : MatrixType, ArrayLiteralConvertible {
     typealias DoubleVector
     typealias Int32Vector
     typealias UInt32Vector
-    typealias BooleanVector:BooleanVectorType
+    typealias BooleanVector
     // T.BooleanVector == BooleanVector : Must use this key with mixed types.
     subscript(_:Int) -> Element { get set }
     init<T:VectorType where T.BooleanVector == BooleanVector>(_: T, @noescape _:(_:T.Element) -> Element)

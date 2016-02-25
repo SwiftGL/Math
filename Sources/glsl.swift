@@ -885,6 +885,7 @@ public func inverse<T:ArithmeticType>(m:Matrix4x4<T>) -> Matrix4x4<T> {
 
 @warn_unused_result
 public func lessThan<genType:VectorType where
+    genType.BooleanVector:BooleanVectorType,
     genType.BooleanVector == genType.BooleanVector.BooleanVector
     >(x:genType, _ y:genType) -> genType.BooleanVector {
         return genType.BooleanVector(x, y, <)
@@ -892,6 +893,7 @@ public func lessThan<genType:VectorType where
 
 @warn_unused_result
 public func lessThanEqual<genType:VectorType where
+    genType.BooleanVector:BooleanVectorType,
     genType.BooleanVector == genType.BooleanVector.BooleanVector
     >(x:genType, _ y:genType) -> genType.BooleanVector {
         return genType.BooleanVector(x, y, <=)
@@ -899,6 +901,7 @@ public func lessThanEqual<genType:VectorType where
 
 @warn_unused_result
 public func greaterThan<genType:VectorType where
+    genType.BooleanVector:BooleanVectorType,
     genType.BooleanVector == genType.BooleanVector.BooleanVector
     >(x:genType, _ y:genType) -> genType.BooleanVector {
         return genType.BooleanVector(x, y, >)
@@ -906,6 +909,7 @@ public func greaterThan<genType:VectorType where
 
 @warn_unused_result
 public func greaterThanEqual<genType:VectorType where
+    genType.BooleanVector:BooleanVectorType,
     genType.BooleanVector == genType.BooleanVector.BooleanVector
     >(x:genType, _ y:genType) -> genType.BooleanVector {
         return genType.BooleanVector(x, y, >=)
@@ -913,6 +917,7 @@ public func greaterThanEqual<genType:VectorType where
 
 @warn_unused_result
 public func equal<genType:VectorType where
+    genType.BooleanVector:BooleanVectorType,
     genType.BooleanVector == genType.BooleanVector.BooleanVector
     >(x:genType, _ y:genType) -> genType.BooleanVector {
         return genType.BooleanVector(x, y, ==)
@@ -920,6 +925,7 @@ public func equal<genType:VectorType where
 
 @warn_unused_result
 public func notEqual<genType:VectorType where
+    genType.BooleanVector:BooleanVectorType,
     genType.BooleanVector == genType.BooleanVector.BooleanVector
     >(x:genType, _ y:genType) -> genType.BooleanVector {
         return genType.BooleanVector(x, y, !=)
