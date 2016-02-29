@@ -630,8 +630,8 @@ extension SGLMath
         (eye:Vector3<T>, _ center:Vector3<T>, _ up:Vector3<T>) -> Matrix4x4<T>
     {
         let f:Vector3<T> = normalize(center - eye)
-        let s:Vector3<T> = normalize(cross(up, f))
-        let u:Vector3<T> = cross(f, s)
+        let s:Vector3<T> = normalize(cross(f, up))
+        let u:Vector3<T> = cross(s, f)
 
         let r30:T = -dot(s, eye)
         let r31:T = -dot(u, eye)
