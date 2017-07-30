@@ -349,7 +349,7 @@ public func mod<genType:VectorType>
 @warn_unused_result
 public func modf<genType:VectorType where
     genType.Element:FloatingPointArithmeticType
-    >(x:genType, inout _ i:genType) -> genType {
+    >(x:genType, _ i:inout genType) -> genType {
     return genType(x, &i, SGLMath.SGLmodf)
 }
 
@@ -521,7 +521,7 @@ public func frexp<genType:VectorType, genIType:VectorType where
     genType.Element:FloatingPointArithmeticType,
     genIType.Element == Int32,
     genType.BooleanVector == genIType.BooleanVector
-    >(x:genType, inout _ exp:genIType) -> genType {
+    >(x:genType, _ exp:inout genIType) -> genType {
         return genType(x, &exp, SGLMath.SGLfrexp)
 }
 

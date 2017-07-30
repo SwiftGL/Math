@@ -27,23 +27,23 @@
 
 // Arithmetic Operators
 
-public prefix func ++<T:MatrixType>(inout v: T) -> T {
+public prefix func ++<T:MatrixType>(v: inout T) -> T {
     v = v + 1
     return v
 }
 
-public postfix func ++<T:MatrixType>(inout v: T) -> T {
+public postfix func ++<T:MatrixType>(v: inout T) -> T {
     let r = v
     v = v + 1
     return r
 }
 
-public prefix func --<T:MatrixType>(inout v: T) -> T {
+public prefix func --<T:MatrixType>(v: inout T) -> T {
     v = v - 1
     return v
 }
 
-public postfix func --<T:MatrixType>(inout v: T) -> T {
+public postfix func --<T:MatrixType>(v: inout T) -> T {
     let r = v
     v = v - 1
     return r
@@ -91,7 +91,7 @@ public func +<T:MatrixType>(x1: T, x2: T) -> T {
     return T(x1, x2, +)
 }
 
-public func +=<T:MatrixType>(inout x1: T, x2: T) {
+public func +=<T:MatrixType>(x1: inout T, x2: T) {
     x1 = x1 + x2
 }
 
@@ -105,7 +105,7 @@ public func +<T:MatrixType>(x: T, s: T.Element) -> T {
     return T(x, s, +)
 }
 
-public func +=<T:MatrixType>(inout x: T, s: T.Element) {
+public func +=<T:MatrixType>(x: inout T, s: T.Element) {
     x = x + s
 }
 
@@ -151,7 +151,7 @@ public func -<T:MatrixType>(x1: T, x2: T) -> T {
     return T(x1, x2, -)
 }
 
-public func -=<T:MatrixType>(inout x1: T, x2: T) {
+public func -=<T:MatrixType>(x1: inout T, x2: T) {
     x1 = x1 - x2
 }
 
@@ -165,7 +165,7 @@ public func -<T:MatrixType>(x: T, s: T.Element) -> T {
     return T(x, s, -)
 }
 
-public func -=<T:MatrixType>(inout x: T, s: T.Element) {
+public func -=<T:MatrixType>(x: inout T, s: T.Element) {
     x = x - s
 }
 
@@ -253,7 +253,7 @@ public func *<T:MatrixType>(x: T, s: T.Element) -> T {
     return T(x, s, *)
 }
 
-public func *=<T:MatrixType>(inout x: T, s: T.Element) {
+public func *=<T:MatrixType>(x: inout T, s: T.Element) {
     x = x * s
 }
 
@@ -267,7 +267,7 @@ public func /<T:MatrixType>(x: T, s: T.Element) -> T {
     return T(x, s, /)
 }
 
-public func /=<T:MatrixType>(inout x: T, s: T.Element) {
+public func /=<T:MatrixType>(x: inout T, s: T.Element) {
     x = x / s
 }
 
@@ -276,7 +276,7 @@ public func %<T:MatrixType>(x1: T, x2: T) -> T {
     return T(x1, x2, %)
 }
 
-public func %=<T:MatrixType>(inout x1: T, x2: T) {
+public func %=<T:MatrixType>(x1: inout T, x2: T) {
     x1 = x1 % x2
 }
 
@@ -290,7 +290,7 @@ public func %<T:MatrixType>(x: T, s: T.Element) -> T {
     return T(x, s, %)
 }
 
-public func %=<T:MatrixType>(inout x: T, s: T.Element) {
+public func %=<T:MatrixType>(x: inout T, s: T.Element) {
     x = x % s
 }
 
@@ -397,7 +397,7 @@ public func << <T:MatrixType where T.Element:BitsOperationsType>(v: T, s: T.Elem
     return T(v, s, <<)
 }
 
-public func <<= <T:MatrixType where T.Element:BitsOperationsType>(inout v: T, s: T.Element) {
+public func <<= <T:MatrixType where T.Element:BitsOperationsType>(v: inout T, s: T.Element) {
     v = v << s
 }
 
@@ -406,7 +406,7 @@ public func >> <T:MatrixType where T.Element:BitsOperationsType>(v: T, s: T.Elem
     return T(v, s, <<)
 }
 
-public func >>= <T:MatrixType where T.Element:BitsOperationsType>(inout v: T, s: T.Element) {
+public func >>= <T:MatrixType where T.Element:BitsOperationsType>(v: inout T, s: T.Element) {
     v = v >> s
 }
 
@@ -415,7 +415,7 @@ public func &<T:MatrixType where T.Element:BitsOperationsType>(x1: T, x2: T) -> 
     return T(x1, x2, &)
 }
 
-public func &=<T:MatrixType where T.Element:BitsOperationsType>(inout x1: T, x2: T) {
+public func &=<T:MatrixType where T.Element:BitsOperationsType>(x1: inout T, x2: T) {
     x1 = x1 & x2
 }
 
@@ -429,7 +429,7 @@ public func &<T:MatrixType where T.Element:BitsOperationsType>(x: T, s: T.Elemen
     return T(x, s, &)
 }
 
-public func &=<T:MatrixType where T.Element:BitsOperationsType>(inout x: T, s: T.Element) {
+public func &=<T:MatrixType where T.Element:BitsOperationsType>(x: inout T, s: T.Element) {
     x = x & s
 }
 
@@ -438,7 +438,7 @@ public func |<T:MatrixType where T.Element:BitsOperationsType>(x1: T, x2: T) -> 
     return T(x1, x2, |)
 }
 
-public func |=<T:MatrixType where T.Element:BitsOperationsType>(inout x1: T, x2: T) {
+public func |=<T:MatrixType where T.Element:BitsOperationsType>(x1: inout T, x2: T) {
     x1 = x1 | x2
 }
 
@@ -452,7 +452,7 @@ public func |<T:MatrixType where T.Element:BitsOperationsType>(x: T, s: T.Elemen
     return T(x, s, |)
 }
 
-public func |=<T:MatrixType where T.Element:BitsOperationsType>(inout x: T, s: T.Element) {
+public func |=<T:MatrixType where T.Element:BitsOperationsType>(x: inout T, s: T.Element) {
     x = x | s
 }
 
@@ -461,7 +461,7 @@ public func ^<T:MatrixType where T.Element:BitsOperationsType>(v1: T, v2: T) -> 
     return T(v1, v2, ^)
 }
 
-public func ^=<T:MatrixType where T.Element:BitsOperationsType>(inout x1: T, x2: T) {
+public func ^=<T:MatrixType where T.Element:BitsOperationsType>(x1: inout T, x2: T) {
     x1 = x1 ^ x2
 }
 
@@ -475,7 +475,7 @@ public func ^<T:MatrixType where T.Element:BitsOperationsType>(x: T, s: T.Elemen
     return T(x, s, ^)
 }
 
-public func ^=<T:MatrixType where T.Element:BitsOperationsType>(inout x: T, s: T.Element) {
+public func ^=<T:MatrixType where T.Element:BitsOperationsType>(x: inout T, s: T.Element) {
     x = x ^ s
 }
 
@@ -488,13 +488,13 @@ public prefix func ~<T:MatrixType where T.Element:BitsOperationsType>(v: T) -> T
 // Signed Numbers Only
 
 @warn_unused_result
-public prefix func +<T:MatrixType where T.Element:SignedNumberType>
+public prefix func +<T:MatrixType where T.Element:SignedNumber>
     (v: T) -> T {
     return v
 }
 
 @warn_unused_result
-public prefix func -<T:MatrixType where T.Element:SignedNumberType>
+public prefix func -<T:MatrixType where T.Element:SignedNumber>
     (x: T) -> T {
     #if !os(Linux)
         switch (x) {
@@ -561,7 +561,7 @@ public func *<T:VectorType>(v1: T, v2: T) -> T {
     return T(v1, v2, *)
 }
 
-public func *=<T:VectorType>(inout v1: T, v2: T) {
+public func *=<T:VectorType>(v1: inout T, v2: T) {
     v1 = v1 * v2
 }
 
@@ -588,6 +588,6 @@ public func /<T:VectorType>(v1: T, v2: T) -> T {
     return T(v1, v2, /)
 }
 
-public func /=<T:VectorType>(inout v1: T, v2: T) {
+public func /=<T:VectorType>(v1: inout T, v2: T) {
     v1 = v1 / v2
 }

@@ -29,6 +29,10 @@ public struct Matrix3x3<T:ArithmeticType> : MatrixType {
     public var startIndex: Int { return 0 }
     public var endIndex: Int { return 3 }
 
+    public func index(after i: Int) -> Int {
+        return i + 1
+    }
+
     public subscript(column: Int) -> Vector3<T> {
         get {
             switch(column) {
@@ -53,7 +57,7 @@ public struct Matrix3x3<T:ArithmeticType> : MatrixType {
     }
 
     public var debugDescription: String {
-        return String(self.dynamicType) + "(" + [x,y,z].map{ (v:Vector3<T>) -> String in
+        return String(describing: type(of:self)) + "(" + [x,y,z].map{ (v:Vector3<T>) -> String in
             "[" + [v.x,v.y,v.z].map{ (n:T) -> String in String(n) }.joinWithSeparator(", ") + "]"
             }.joinWithSeparator(", ") + ")"
     }
@@ -216,25 +220,25 @@ public struct Matrix3x3<T:ArithmeticType> : MatrixType {
         self.z = Vector3<T>(m.z)
     }
     
-    public init (_ m:Matrix3x3<T>, @noescape _ op:(_:T) -> T) {
+    public init (_ m:Matrix3x3<T>, _ op:(_:T) -> T) {
         self.x = Vector3<T>(m.x, op)
         self.y = Vector3<T>(m.y, op)
         self.z = Vector3<T>(m.z, op)
     }
 
-    public init (_ s:T, _ m:Matrix3x3<T>, @noescape _ op:(_:T, _:T) -> T) {
+    public init (_ s:T, _ m:Matrix3x3<T>, _ op:(_:T, _:T) -> T) {
         self.x = Vector3<T>(s, m.x, op)
         self.y = Vector3<T>(s, m.y, op)
         self.z = Vector3<T>(s, m.z, op)
     }
 
-    public init (_ m:Matrix3x3<T>, _ s:T, @noescape _ op:(_:T, _:T) -> T) {
+    public init (_ m:Matrix3x3<T>, _ s:T, _ op:(_:T, _:T) -> T) {
         self.x = Vector3<T>(m.x, s, op)
         self.y = Vector3<T>(m.y, s, op)
         self.z = Vector3<T>(m.z, s, op)
     }
 
-    public init (_ m1:Matrix3x3<T>, _ m2:Matrix3x3<T>, @noescape _ op:(_:T, _:T) -> T) {
+    public init (_ m1:Matrix3x3<T>, _ m2:Matrix3x3<T>, _ op:(_:T, _:T) -> T) {
         self.x = Vector3<T>(m1.x, m2.x, op)
         self.y = Vector3<T>(m1.y, m2.y, op)
         self.z = Vector3<T>(m1.z, m2.z, op)
@@ -292,7 +296,6 @@ public func ==<T:ArithmeticType>(m1: Matrix3x3<T>, m2: Matrix3x3<T>) -> Bool {
 }
 
 
-@warn_unused_result
 public func *<T:ArithmeticType>(v: Vector3<T>, m: Matrix3x3<T>) -> Vector3<T> {
     var x:T = v.x * m.x.x
     x = x + v.y * m.x.y
@@ -307,7 +310,6 @@ public func *<T:ArithmeticType>(v: Vector3<T>, m: Matrix3x3<T>) -> Vector3<T> {
 }
 
 
-@warn_unused_result
 public func *<T:ArithmeticType>(m: Matrix3x3<T>, v: Vector3<T>) -> Vector3<T> {
     var rv:Vector3<T> = m.x * v.x
     rv = rv + m.y * v.y
@@ -316,7 +318,6 @@ public func *<T:ArithmeticType>(m: Matrix3x3<T>, v: Vector3<T>) -> Vector3<T> {
 }
 
 
-@warn_unused_result
 public func *<T:ArithmeticType>(m1: Matrix3x3<T>, m2: Matrix2x3<T>) -> Matrix2x3<T> {
     var x:Vector3<T> = m1.x * m2[0].x
     x = x + m1.y * m2[0].y
@@ -328,7 +329,6 @@ public func *<T:ArithmeticType>(m1: Matrix3x3<T>, m2: Matrix2x3<T>) -> Matrix2x3
 }
 
 
-@warn_unused_result
 public func *<T:ArithmeticType>(m1: Matrix3x3<T>, m2: Matrix3x3<T>) -> Matrix3x3<T> {
     var x:Vector3<T> = m1.x * m2[0].x
     x = x + m1.y * m2[0].y
@@ -343,7 +343,6 @@ public func *<T:ArithmeticType>(m1: Matrix3x3<T>, m2: Matrix3x3<T>) -> Matrix3x3
 }
 
 
-@warn_unused_result
 public func *<T:ArithmeticType>(m1: Matrix3x3<T>, m2: Matrix4x3<T>) -> Matrix4x3<T> {
     var x:Vector3<T> = m1.x * m2[0].x
     x = x + m1.y * m2[0].y
@@ -361,29 +360,26 @@ public func *<T:ArithmeticType>(m1: Matrix3x3<T>, m2: Matrix4x3<T>) -> Matrix4x3
 }
 
 
-public func *=<T:ArithmeticType>(inout m1: Matrix3x3<T>, m2: Matrix3x3<T>) {
+public func *=<T:ArithmeticType>(m1: inout Matrix3x3<T>, m2: Matrix3x3<T>) {
     m1 = m1 * m2
 }
 
 
-@warn_unused_result
 public func /<T:ArithmeticType>(v: Vector3<T>, m: Matrix3x3<T>) -> Vector3<T> {
     return v * m.inverse
 }
 
 
-@warn_unused_result
 public func /<T:ArithmeticType>(m: Matrix3x3<T>, v: Vector3<T>) -> Vector3<T> {
     return m.inverse * v
 }
 
 
-@warn_unused_result
 public func /<T:ArithmeticType>(m1: Matrix3x3<T>, m2: Matrix3x3<T>) -> Matrix3x3<T> {
     return m1 * m2.inverse
 }
 
 
-public func /=<T:ArithmeticType>(inout m1: Matrix3x3<T>, m2: Matrix3x3<T>) {
+public func /=<T:ArithmeticType>(m1: inout Matrix3x3<T>, m2: Matrix3x3<T>) {
     m1 = m1 / m2
 }

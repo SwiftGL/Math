@@ -29,6 +29,10 @@ public struct Matrix3x4<T:ArithmeticType> : MatrixType {
     public var startIndex: Int { return 0 }
     public var endIndex: Int { return 3 }
 
+    public func index(after i: Int) -> Int {
+        return i + 1
+    }
+
     public subscript(column: Int) -> Vector4<T> {
         get {
             switch(column) {
@@ -53,7 +57,7 @@ public struct Matrix3x4<T:ArithmeticType> : MatrixType {
     }
 
     public var debugDescription: String {
-        return String(self.dynamicType) + "(" + [x,y,z].map{ (v:Vector4<T>) -> String in
+        return String(describing: type(of:self)) + "(" + [x,y,z].map{ (v:Vector4<T>) -> String in
             "[" + [v.x,v.y,v.z,v.w].map{ (n:T) -> String in String(n) }.joinWithSeparator(", ") + "]"
             }.joinWithSeparator(", ") + ")"
     }
@@ -216,25 +220,25 @@ public struct Matrix3x4<T:ArithmeticType> : MatrixType {
         self.z = Vector4<T>(m.z)
     }
 
-    public init (_ m:Matrix3x4<T>, @noescape _ op:(_:T) -> T) {
+    public init (_ m:Matrix3x4<T>, _ op:(_:T) -> T) {
         self.x = Vector4<T>(m.x, op)
         self.y = Vector4<T>(m.y, op)
         self.z = Vector4<T>(m.z, op)
     }
 
-    public init (_ s:T, _ m:Matrix3x4<T>, @noescape _ op:(_:T, _:T) -> T) {
+    public init (_ s:T, _ m:Matrix3x4<T>, _ op:(_:T, _:T) -> T) {
         self.x = Vector4<T>(s, m.x, op)
         self.y = Vector4<T>(s, m.y, op)
         self.z = Vector4<T>(s, m.z, op)
     }
 
-    public init (_ m:Matrix3x4<T>, _ s:T, @noescape _ op:(_:T, _:T) -> T) {
+    public init (_ m:Matrix3x4<T>, _ s:T, _ op:(_:T, _:T) -> T) {
         self.x = Vector4<T>(m.x, s, op)
         self.y = Vector4<T>(m.y, s, op)
         self.z = Vector4<T>(m.z, s, op)
     }
 
-    public init (_ m1:Matrix3x4<T>, _ m2:Matrix3x4<T>, @noescape _ op:(_:T, _:T) -> T) {
+    public init (_ m1:Matrix3x4<T>, _ m2:Matrix3x4<T>, _ op:(_:T, _:T) -> T) {
         self.x = Vector4<T>(m1.x, m2.x, op)
         self.y = Vector4<T>(m1.y, m2.y, op)
         self.z = Vector4<T>(m1.z, m2.z, op)
@@ -257,7 +261,6 @@ public func ==<T:ArithmeticType>(m1: Matrix3x4<T>, m2: Matrix3x4<T>) -> Bool {
 }
 
 
-@warn_unused_result
 public func *<T:ArithmeticType>(v: Vector4<T>, m: Matrix3x4<T>) -> Vector3<T> {
     var x:T = v.x * m.x.x
         x = x + v.y * m.x.y
@@ -275,7 +278,6 @@ public func *<T:ArithmeticType>(v: Vector4<T>, m: Matrix3x4<T>) -> Vector3<T> {
 }
 
 
-@warn_unused_result
 public func *<T:ArithmeticType>(m: Matrix3x4<T>, v: Vector3<T>) -> Vector4<T> {
     var rv:Vector4<T> = m.x * v.x
         rv = rv + m.y * v.y
@@ -284,7 +286,6 @@ public func *<T:ArithmeticType>(m: Matrix3x4<T>, v: Vector3<T>) -> Vector4<T> {
 }
 
 
-@warn_unused_result
 public func *<T:ArithmeticType>(m1: Matrix3x4<T>, m2: Matrix2x3<T>) -> Matrix2x4<T> {
     var x:Vector4<T> = m1.x * m2[0].x
         x = x + m1.y * m2[0].y
@@ -296,7 +297,6 @@ public func *<T:ArithmeticType>(m1: Matrix3x4<T>, m2: Matrix2x3<T>) -> Matrix2x4
 }
 
 
-@warn_unused_result
 public func *<T:ArithmeticType>(m1: Matrix3x4<T>, m2: Matrix3x3<T>) -> Matrix3x4<T> {
     var x:Vector4<T> = m1.x * m2[0].x
         x = x + m1.y * m2[0].y
@@ -311,7 +311,6 @@ public func *<T:ArithmeticType>(m1: Matrix3x4<T>, m2: Matrix3x3<T>) -> Matrix3x4
 }
 
 
-@warn_unused_result
 public func *<T:ArithmeticType>(m1: Matrix3x4<T>, m2: Matrix4x3<T>) -> Matrix4x4<T> {
     var x:Vector4<T> = m1.x * m2[0].x
         x = x + m1.y * m2[0].y

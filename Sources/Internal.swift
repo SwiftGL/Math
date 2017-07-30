@@ -34,7 +34,7 @@ public final class SGLMath {
 
     // This is MurmurHash3 by Austin Appleby
     // https://en.wikipedia.org/wiki/MurmurHash
-    public static func hash(nums: Int...) -> Int
+    public static func hash(_ nums: Int...) -> Int
     {
         if sizeof(Int) == 8 { // 64 bit
             func rotl(x:UInt, _ r:UInt) -> UInt {
@@ -333,7 +333,7 @@ public final class SGLMath {
         preconditionFailure()
     }
 
-    public static func SGLmodf<T:FloatingPointArithmeticType>(x:T, inout _ i:T) -> T {
+    public static func SGLmodf<T:FloatingPointArithmeticType>(x:T, _ i:inout T) -> T {
         if let z = x as? Double {
             return withUnsafeMutablePointer(&i) {
                 return modf(z, UnsafeMutablePointer<Double>($0)) as! T
@@ -357,7 +357,7 @@ public final class SGLMath {
         preconditionFailure()
     }
 
-    public static func SGLfrexp<T:FloatingPointArithmeticType>(x:T, inout _ exp:Int32) -> T {
+    public static func SGLfrexp<T:FloatingPointArithmeticType>(x:T, _ exp:inout Int32) -> T {
         if let z = x as? Double {
             return frexp(z, &exp) as! T
         }
