@@ -263,9 +263,7 @@ public struct Vector3<T:ArithmeticType> : VectorType {
             self.z = op(v1[2], v2[2], v3[2])
     }
 
-}
-
-
-public func ==<T:ArithmeticType>(v1: Vector3<T>, v2: Vector3<T>) -> Bool {
-    return v1.x == v2.x && v1.y == v2.y && v1.z == v2.z
+    public static func ==(v1: Vector3<T>, v2: Vector3<T>) -> Bool {
+        return v1.x == v2.x && v1.y == v2.y && v1.z == v2.z
+    }
 }

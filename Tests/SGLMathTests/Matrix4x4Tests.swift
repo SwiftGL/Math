@@ -121,4 +121,12 @@ class Matrix4x4Tests: XCTestCase {
         XCTAssertEqual(m0, m1)
     }
 
+    static var allTests = [
+        ("testIdentityInits", testIdentityInits),
+        ("testCommmonInits", testCommmonInits),
+        ("testDivide", testDivide),
+        ("testMultiplyWith2x4", testMultiplyWith2x4),
+        ("testMultiplyVector", testMultiplyVector),
+        ("testMultiArray", testMultiArray),
+    ]
 }

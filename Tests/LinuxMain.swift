@@ -21,34 +21,14 @@
 
 
 import XCTest
-import SGLMath
+@testable import SGLMathTests
 
-class Vector2Tests: XCTestCase {
-
-    func test1() {
-        let a = vec2(1.0)
-        let b = vec2(1.0)
-        let c = vec2(2.0)
-        XCTAssertEqual(a, b)
-        XCTAssertNotEqual(a, c)
-    }
-
-    func test2() {
-        var a = vec2(1)
-        let b = a + 1
-        a += 1
-        XCTAssertEqual(a.x, 2)
-        XCTAssertEqual(a.y, 2)
-        XCTAssertEqual(a.x, b.x)
-        XCTAssertEqual(a.y, b.y)
-    }
-
-    func test3() {
-        let a = ivec2(1)
-        let b = ivec2(1)
-        let c = ivec2(2)
-        XCTAssertEqual(a, b)
-        XCTAssertNotEqual(a, c)
-    }
-
-}
+XCTMain([
+    testCase(SwizzleTests.allTests),
+    testCase(Vector2Tests.allTests),
+    testCase(Vector4Tests.allTests),
+    testCase(FunctionsTests.allTests),
+    testCase(Matrix2x2Tests.allTests),
+    testCase(Matrix3x3Tests.allTests),
+    testCase(Matrix4x4Tests.allTests),
+])

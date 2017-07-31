@@ -153,10 +153,7 @@ public struct Quaternion<T:FloatingPointArithmeticType> : MatrixType, Expressibl
     }
 
 
+    public static func ==(q1: Quaternion<T>, q2: Quaternion<T>) -> Bool {
+        return q1.x == q2.x && q1.y == q2.y && q1.z == q2.z && q1.w == q2.w
+    }
 }
-
-
-public func ==<T:ArithmeticType>(q1: Quaternion<T>, q2: Quaternion<T>) -> Bool {
-    return q1.x == q2.x && q1.y == q2.y && q1.z == q2.z && q1.w == q2.w
-}
-

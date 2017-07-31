@@ -111,4 +111,16 @@ class Vector4Tests: XCTestCase {
         XCTAssertEqual(v1/v2, v3)
     }
 
+    static var allTests = [
+        ("testInit", testInit),
+        ("testAddFloat", testAddFloat),
+        ("testAddInt", testAddInt),
+        ("testSubFloat", testSubFloat),
+        ("testSubInt", testSubInt),
+        ("testMulFloat", testMulFloat),
+        ("testMulInt", testMulInt),
+        ("testMulUInt", testMulUInt),
+        ("testDivFloat", testDivFloat),
+        ("testDivInt", testDivInt),
+    ]
 }

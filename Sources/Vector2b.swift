@@ -135,9 +135,7 @@ public struct Vector2b : BooleanVectorType {
             self.y = op(v1[1], v2[1])
     }
 
-}
-
-
-public func ==(v1: Vector2b, v2: Vector2b) -> Bool {
-    return v1.x == v2.x && v1.y == v2.y
+    public static func ==(v1: Vector2b, v2: Vector2b) -> Bool {
+        return v1.x == v2.x && v1.y == v2.y
+    }
 }

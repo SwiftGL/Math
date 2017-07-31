@@ -49,7 +49,6 @@ public postfix func --<T:MatrixType>(v: inout T) -> T {
     return r
 }
 
-@warn_unused_result
 public func +<T:MatrixType>(x1: T, x2: T) -> T {
     #if !os(Linux)
         switch (x1) {
@@ -95,12 +94,10 @@ public func +=<T:MatrixType>(x1: inout T, x2: T) {
     x1 = x1 + x2
 }
 
-@warn_unused_result
 public func +<T:MatrixType>(s: T.Element, x: T) -> T {
     return T(s, x, +)
 }
 
-@warn_unused_result
 public func +<T:MatrixType>(x: T, s: T.Element) -> T {
     return T(x, s, +)
 }
@@ -109,7 +106,6 @@ public func +=<T:MatrixType>(x: inout T, s: T.Element) {
     x = x + s
 }
 
-@warn_unused_result
 public func -<T:MatrixType>(x1: T, x2: T) -> T {
     #if !os(Linux)
         switch (x1) {
@@ -155,12 +151,10 @@ public func -=<T:MatrixType>(x1: inout T, x2: T) {
     x1 = x1 - x2
 }
 
-@warn_unused_result
 public func -<T:MatrixType>(s: T.Element, x: T) -> T {
     return T(s, x, -)
 }
 
-@warn_unused_result
 public func -<T:MatrixType>(x: T, s: T.Element) -> T {
     return T(x, s, -)
 }
@@ -169,7 +163,6 @@ public func -=<T:MatrixType>(x: inout T, s: T.Element) {
     x = x - s
 }
 
-@warn_unused_result
 public func *<T:MatrixType>(s: T.Element, x: T) -> T {
     #if !os(Linux)
         switch (x) {
@@ -211,7 +204,6 @@ public func *<T:MatrixType>(s: T.Element, x: T) -> T {
     return T(s, x, *)
 }
 
-@warn_unused_result
 public func *<T:MatrixType>(x: T, s: T.Element) -> T {
     #if !os(Linux)
         switch (x) {
@@ -257,12 +249,10 @@ public func *=<T:MatrixType>(x: inout T, s: T.Element) {
     x = x * s
 }
 
-@warn_unused_result
 public func /<T:MatrixType>(s: T.Element, x: T) -> T {
     return T(s, x, /)
 }
 
-@warn_unused_result
 public func /<T:MatrixType>(x: T, s: T.Element) -> T {
     return T(x, s, /)
 }
@@ -271,7 +261,6 @@ public func /=<T:MatrixType>(x: inout T, s: T.Element) {
     x = x / s
 }
 
-@warn_unused_result
 public func %<T:MatrixType>(x1: T, x2: T) -> T {
     return T(x1, x2, %)
 }
@@ -280,12 +269,10 @@ public func %=<T:MatrixType>(x1: inout T, x2: T) {
     x1 = x1 % x2
 }
 
-@warn_unused_result
 public func %<T:MatrixType>(s: T.Element, x: T) -> T {
     return T(s, x, %)
 }
 
-@warn_unused_result
 public func %<T:MatrixType>(x: T, s: T.Element) -> T {
     return T(x, s, %)
 }
@@ -297,8 +284,7 @@ public func %=<T:MatrixType>(x: inout T, s: T.Element) {
 
 // Unchecked Integer Operators
 
-@warn_unused_result
-public func &+<T:MatrixType where T.Element:IntegerArithmeticType>(v1: T, v2: T) -> T {
+public func &+<T:MatrixType>(v1: T, v2: T) -> T where T.Element:IntegerArithmetic {
     #if !os(Linux)
         switch (v1) {
         case is Vector2<Int32>, is Vector2<UInt32> :
@@ -312,18 +298,15 @@ public func &+<T:MatrixType where T.Element:IntegerArithmeticType>(v1: T, v2: T)
     return T(v1, v2, &+)
 }
 
-@warn_unused_result
-public func &+<T:MatrixType where T.Element:IntegerArithmeticType>(s: T.Element, v: T) -> T {
+public func &+<T:MatrixType>(s: T.Element, v: T) -> T where T.Element:IntegerArithmetic {
     return T(s, v, &+)
 }
 
-@warn_unused_result
-public func &+<T:MatrixType where T.Element:IntegerArithmeticType>(v: T, s: T.Element) -> T {
+public func &+<T:MatrixType>(v: T, s: T.Element) -> T where T.Element:IntegerArithmetic {
     return T(v, s, &+)
 }
 
-@warn_unused_result
-public func &-<T:MatrixType where T.Element:IntegerArithmeticType>(v1: T, v2: T) -> T {
+public func &-<T:MatrixType>(v1: T, v2: T) -> T where T.Element:IntegerArithmetic {
     #if !os(Linux)
         switch (v1) {
         case is Vector2<Int32>, is Vector2<UInt32> :
@@ -337,18 +320,15 @@ public func &-<T:MatrixType where T.Element:IntegerArithmeticType>(v1: T, v2: T)
     return T(v1, v2, &-)
 }
 
-@warn_unused_result
-public func &-<T:MatrixType where T.Element:IntegerArithmeticType>(s: T.Element, v: T) -> T {
+public func &-<T:MatrixType>(s: T.Element, v: T) -> T where T.Element:IntegerArithmetic {
     return T(s, v, &-)
 }
 
-@warn_unused_result
-public func &-<T:MatrixType where T.Element:IntegerArithmeticType>(v: T, s: T.Element) -> T {
+public func &-<T:MatrixType>(v: T, s: T.Element) -> T where T.Element:IntegerArithmetic {
     return T(v, s, &-)
 }
 
-@warn_unused_result
-public func &*<T:MatrixType where T.Element:IntegerArithmeticType>(v1: T, v2: T) -> T {
+public func &*<T:MatrixType>(v1: T, v2: T) -> T where T.Element:IntegerArithmetic {
     #if !os(Linux)
         switch (v1) {
         case is Vector2<Int32>, is Vector2<UInt32> :
@@ -362,8 +342,7 @@ public func &*<T:MatrixType where T.Element:IntegerArithmeticType>(v1: T, v2: T)
     return T(v1, v2, &*)
 }
 
-@warn_unused_result
-public func &*<T:MatrixType where T.Element:IntegerArithmeticType>(s: T.Element, v: T) -> T {
+public func &*<T:MatrixType>(s: T.Element, v: T) -> T where T.Element:IntegerArithmetic {
     #if !os(Linux)
         switch (v) {
         case is Vector2<Int32>, is Vector2<UInt32> :
@@ -377,8 +356,7 @@ public func &*<T:MatrixType where T.Element:IntegerArithmeticType>(s: T.Element,
     return T(s, v, &*)
 }
 
-@warn_unused_result
-public func &*<T:MatrixType where T.Element:IntegerArithmeticType>(v: T, s: T.Element) -> T {
+public func &*<T:MatrixType>(v: T, s: T.Element) -> T where T.Element:IntegerArithmetic {
     #if !os(Linux)
         switch (v) {
         case is Vector2<Int32>, is Vector2<UInt32> :
@@ -392,110 +370,94 @@ public func &*<T:MatrixType where T.Element:IntegerArithmeticType>(v: T, s: T.El
     return T(v, s, &*)
 }
 
-@warn_unused_result
-public func << <T:MatrixType where T.Element:BitsOperationsType>(v: T, s: T.Element) -> T {
+public func << <T:MatrixType>(v: T, s: T.Element) -> T where T.Element:BitsOperationsType {
     return T(v, s, <<)
 }
 
-public func <<= <T:MatrixType where T.Element:BitsOperationsType>(v: inout T, s: T.Element) {
+public func <<= <T:MatrixType>(v: inout T, s: T.Element) where T.Element:BitsOperationsType {
     v = v << s
 }
 
-@warn_unused_result
-public func >> <T:MatrixType where T.Element:BitsOperationsType>(v: T, s: T.Element) -> T {
+public func >> <T:MatrixType>(v: T, s: T.Element) -> T where T.Element:BitsOperationsType {
     return T(v, s, <<)
 }
 
-public func >>= <T:MatrixType where T.Element:BitsOperationsType>(v: inout T, s: T.Element) {
+public func >>= <T:MatrixType>(v: inout T, s: T.Element) where T.Element:BitsOperationsType {
     v = v >> s
 }
 
-@warn_unused_result
-public func &<T:MatrixType where T.Element:BitsOperationsType>(x1: T, x2: T) -> T {
+public func &<T:MatrixType>(x1: T, x2: T) -> T where T.Element:BitsOperationsType {
     return T(x1, x2, &)
 }
 
-public func &=<T:MatrixType where T.Element:BitsOperationsType>(x1: inout T, x2: T) {
+public func &=<T:MatrixType>(x1: inout T, x2: T) where T.Element:BitsOperationsType {
     x1 = x1 & x2
 }
 
-@warn_unused_result
-public func &<T:MatrixType where T.Element:BitsOperationsType>(s: T.Element, x: T) -> T {
+public func &<T:MatrixType>(s: T.Element, x: T) -> T where T.Element:BitsOperationsType {
     return T(s, x, &)
 }
 
-@warn_unused_result
-public func &<T:MatrixType where T.Element:BitsOperationsType>(x: T, s: T.Element) -> T {
+public func &<T:MatrixType>(x: T, s: T.Element) -> T where T.Element:BitsOperationsType {
     return T(x, s, &)
 }
 
-public func &=<T:MatrixType where T.Element:BitsOperationsType>(x: inout T, s: T.Element) {
+public func &=<T:MatrixType>(x: inout T, s: T.Element) where T.Element:BitsOperationsType {
     x = x & s
 }
 
-@warn_unused_result
-public func |<T:MatrixType where T.Element:BitsOperationsType>(x1: T, x2: T) -> T {
+public func |<T:MatrixType>(x1: T, x2: T) -> T where T.Element:BitsOperationsType {
     return T(x1, x2, |)
 }
 
-public func |=<T:MatrixType where T.Element:BitsOperationsType>(x1: inout T, x2: T) {
+public func |=<T:MatrixType>(x1: inout T, x2: T) where T.Element:BitsOperationsType {
     x1 = x1 | x2
 }
 
-@warn_unused_result
-public func |<T:MatrixType where T.Element:BitsOperationsType>(s: T.Element, x: T) -> T {
+public func |<T:MatrixType>(s: T.Element, x: T) -> T where T.Element:BitsOperationsType {
     return T(s, x, |)
 }
 
-@warn_unused_result
-public func |<T:MatrixType where T.Element:BitsOperationsType>(x: T, s: T.Element) -> T {
+public func |<T:MatrixType>(x: T, s: T.Element) -> T where T.Element:BitsOperationsType {
     return T(x, s, |)
 }
 
-public func |=<T:MatrixType where T.Element:BitsOperationsType>(x: inout T, s: T.Element) {
+public func |=<T:MatrixType>(x: inout T, s: T.Element) where T.Element:BitsOperationsType {
     x = x | s
 }
 
-@warn_unused_result
-public func ^<T:MatrixType where T.Element:BitsOperationsType>(v1: T, v2: T) -> T {
+public func ^<T:MatrixType>(v1: T, v2: T) -> T where T.Element:BitsOperationsType {
     return T(v1, v2, ^)
 }
 
-public func ^=<T:MatrixType where T.Element:BitsOperationsType>(x1: inout T, x2: T) {
+public func ^=<T:MatrixType>(x1: inout T, x2: T) where T.Element:BitsOperationsType {
     x1 = x1 ^ x2
 }
 
-@warn_unused_result
-public func ^<T:MatrixType where T.Element:BitsOperationsType>(s: T.Element, x: T) -> T {
+public func ^<T:MatrixType>(s: T.Element, x: T) -> T where T.Element:BitsOperationsType {
     return T(s, x, ^)
 }
 
-@warn_unused_result
-public func ^<T:MatrixType where T.Element:BitsOperationsType>(x: T, s: T.Element) -> T {
+public func ^<T:MatrixType>(x: T, s: T.Element) -> T where T.Element:BitsOperationsType {
     return T(x, s, ^)
 }
 
-public func ^=<T:MatrixType where T.Element:BitsOperationsType>(x: inout T, s: T.Element) {
+public func ^=<T:MatrixType>(x: inout T, s: T.Element) where T.Element:BitsOperationsType {
     x = x ^ s
 }
 
-@warn_unused_result
-public prefix func ~<T:MatrixType where T.Element:BitsOperationsType>(v: T) -> T {
+public prefix func ~<T:MatrixType>(v: T) -> T where T.Element:BitsOperationsType {
     return T(v, ~)
 }
 
 
 // Signed Numbers Only
 
-@warn_unused_result
-public prefix func +<T:MatrixType where T.Element:SignedNumber>
-    (v: T) -> T {
+public prefix func +<T:MatrixType>(v: T) -> T where T.Element:SignedNumber {
     return v
 }
 
-@warn_unused_result
-public prefix func -<T:MatrixType where T.Element:SignedNumber>
-    (x: T) -> T {
+public prefix func -<T:MatrixType>(x: T) -> T where T.Element:SignedNumber {
     #if !os(Linux)
         switch (x) {
         case is Matrix2x2<Float> :
@@ -543,7 +505,6 @@ public prefix func -<T:MatrixType where T.Element:SignedNumber>
 
 // Vector Multiply and Divide
 
-@warn_unused_result
 public func *<T:VectorType>(v1: T, v2: T) -> T {
     #if !os(Linux)
         switch (v1) {
@@ -565,7 +526,6 @@ public func *=<T:VectorType>(v1: inout T, v2: T) {
     v1 = v1 * v2
 }
 
-@warn_unused_result
 public func /<T:VectorType>(v1: T, v2: T) -> T {
     #if !os(Linux)
         switch (v1) {

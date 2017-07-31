@@ -23,7 +23,7 @@
 import XCTest
 import SGLMath
 
-class Matrix3x3Tests: XCTestCase {
+class Matrix2x2Tests: XCTestCase {
 
     func testIdentityInits() {
         let l = mat3()
@@ -76,4 +76,10 @@ class Matrix3x3Tests: XCTestCase {
         XCTAssertEqualWithAccuracy(v0 * m0, v2, accuracy: 0.00001)
     }
 
+    static var allTests = [
+        ("testIdentityInits", testIdentityInits),
+        ("testCommmonInits", testCommmonInits),
+        ("testDivide", testDivide),
+        ("testMultiplyVector", testMultiplyVector),
+    ]
 }

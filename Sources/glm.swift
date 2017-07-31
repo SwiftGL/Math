@@ -64,7 +64,7 @@ public typealias umat4x4 = Matrix4x4<UInt32>
 extension SGLMath
 {
 
-    public static func translate<T:ArithmeticType>(m:Matrix4x4<T>, _ v:Vector3<T>) -> Matrix4x4<T>
+    public static func translate<T:ArithmeticType>(_ m:Matrix4x4<T>, _ v:Vector3<T>) -> Matrix4x4<T>
     {
         var m3:Vector4<T> = m[0] * v[0]
         m3 += m[1] * v[1]
@@ -75,7 +75,7 @@ extension SGLMath
 
 
     public static func rotate<T:FloatingPointArithmeticType>
-        (m:Matrix4x4<T>, _ angle:T, _ v:Vector3<T>) -> Matrix4x4<T>
+        (_ m:Matrix4x4<T>, _ angle:T, _ v:Vector3<T>) -> Matrix4x4<T>
     {
         let a = angle
         let c = SGLMath.SGLcos(a)
@@ -118,7 +118,7 @@ extension SGLMath
 
 
     public static func rotateSlow<T:FloatingPointArithmeticType>
-        (m:Matrix4x4<T>, _ angle:T, _ v:Vector3<T>) -> Matrix4x4<T>
+        (_ m:Matrix4x4<T>, _ angle:T, _ v:Vector3<T>) -> Matrix4x4<T>
     {
         let a = angle
         let c = SGLMath.SGLcos(a)
@@ -157,7 +157,7 @@ extension SGLMath
     }
 
 
-    public static func scale<T:ArithmeticType>(m:Matrix4x4<T>, _ v:Vector3<T>) -> Matrix4x4<T>
+    public static func scale<T:ArithmeticType>(_ m:Matrix4x4<T>, _ v:Vector3<T>) -> Matrix4x4<T>
     {
         return Matrix4x4<T>(
             m[0] * v[0],
@@ -169,7 +169,7 @@ extension SGLMath
 
 
     public static func ortho<T:FloatingPointArithmeticType>
-        (left:T, _ right:T, _ bottom:T, _ top:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
+        (_ left:T, _ right:T, _ bottom:T, _ top:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
     {
         if glmLeftHanded {
             return orthoLH(left, right, bottom, top, zNear, zFar)
@@ -181,7 +181,7 @@ extension SGLMath
 
 
     public static func ortho<T:FloatingPointArithmeticType>
-        (left:T, _ right:T, _ bottom:T, _ top:T) -> Matrix4x4<T>
+        (_ left:T, _ right:T, _ bottom:T, _ top:T) -> Matrix4x4<T>
     {
         let r00:T = 2 / (right - left)
         let r11:T = 2 / (top - bottom)
@@ -199,7 +199,7 @@ extension SGLMath
 
 
     public static func orthoLH<T:FloatingPointArithmeticType>
-        (left:T, _ right:T, _ bottom:T, _ top:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
+        (_ left:T, _ right:T, _ bottom:T, _ top:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
     {
         let r00:T = 2 / (right - left)
         let r11:T = 2 / (top - bottom)
@@ -225,7 +225,7 @@ extension SGLMath
 
 
     public static func orthoRH<T:FloatingPointArithmeticType>
-        (left:T, _ right:T, _ bottom:T, _ top:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
+        (_ left:T, _ right:T, _ bottom:T, _ top:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
     {
         let r00:T = 2 / (right - left)
         let r11:T = 2 / (top - bottom)
@@ -251,7 +251,7 @@ extension SGLMath
 
 
     public static func frustum<T:FloatingPointArithmeticType>
-        (left:T, _ right:T, _ bottom:T, _ top:T, _ nearVal:T, _ farVal:T) -> Matrix4x4<T>
+        (_ left:T, _ right:T, _ bottom:T, _ top:T, _ nearVal:T, _ farVal:T) -> Matrix4x4<T>
     {
         if glmLeftHanded {
             return frustumLH(left, right, bottom, top, nearVal, farVal)
@@ -262,7 +262,7 @@ extension SGLMath
 
 
     public static func frustumLH<T:FloatingPointArithmeticType>
-        (left:T, _ right:T, _ bottom:T, _ top:T, _ nearVal:T, _ farVal:T) -> Matrix4x4<T>
+        (_ left:T, _ right:T, _ bottom:T, _ top:T, _ nearVal:T, _ farVal:T) -> Matrix4x4<T>
     {
         let r00:T = (2 * nearVal) / (right - left)
         let r11:T = (2 * nearVal) / (top - bottom)
@@ -291,7 +291,7 @@ extension SGLMath
 
 
     public static func frustumRH<T:FloatingPointArithmeticType>
-        (left:T, _ right:T, _ bottom:T, _ top:T, _ nearVal:T, _ farVal:T) -> Matrix4x4<T>
+        (_ left:T, _ right:T, _ bottom:T, _ top:T, _ nearVal:T, _ farVal:T) -> Matrix4x4<T>
     {
         let r00:T = (2 * nearVal) / (right - left)
         let r11:T = (2 * nearVal) / (top - bottom)
@@ -320,7 +320,7 @@ extension SGLMath
 
 
     public static func perspective<T:FloatingPointArithmeticType>
-        (fovy:T, _ aspect:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
+        (_ fovy:T, _ aspect:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
     {
         if glmLeftHanded {
             return perspectiveLH(fovy, aspect, zNear, zFar)
@@ -331,7 +331,7 @@ extension SGLMath
 
 
     public static func perspectiveLH<T:FloatingPointArithmeticType>
-        (fovy:T, _ aspect:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
+        (_ fovy:T, _ aspect:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
     {
         assert(aspect > 0)
 
@@ -361,7 +361,7 @@ extension SGLMath
 
 
     public static func perspectiveRH<T:FloatingPointArithmeticType>
-        (fovy:T, _ aspect:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
+        (_ fovy:T, _ aspect:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
     {
         assert(aspect > 0)
 
@@ -390,7 +390,7 @@ extension SGLMath
 
 
     public static func perspectiveFov<T:FloatingPointArithmeticType>
-        (fov:T, _ width:T, _ height:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
+        (_ fov:T, _ width:T, _ height:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
     {
         if glmLeftHanded {
             return perspectiveFovLH(fov, width, height, zNear, zFar)
@@ -401,7 +401,7 @@ extension SGLMath
 
 
     public static func perspectiveFovLH<T:FloatingPointArithmeticType>
-        (fov:T, _ width:T, _ height:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
+        (_ fov:T, _ width:T, _ height:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
     {
         assert(fov > 0)
         assert(width > 0)
@@ -431,7 +431,7 @@ extension SGLMath
 
 
     public static func perspectiveFovRH<T:FloatingPointArithmeticType>
-        (fov:T, _ width:T, _ height:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
+        (_ fov:T, _ width:T, _ height:T, _ zNear:T, _ zFar:T) -> Matrix4x4<T>
     {
         assert(fov > 0)
         assert(width > 0)
@@ -460,7 +460,7 @@ extension SGLMath
 
 
     public static func infinitePerspective<T:FloatingPointArithmeticType>
-        (fovy:T, _ aspect:T, _ zNear:T, _ ep:T = 0) -> Matrix4x4<T>
+        (_ fovy:T, _ aspect:T, _ zNear:T, _ ep:T = 0) -> Matrix4x4<T>
     {
         if glmLeftHanded {
             return infinitePerspectiveLH(fovy, aspect, zNear, ep)
@@ -471,7 +471,7 @@ extension SGLMath
 
 
     public static func infinitePerspectiveLH<T:FloatingPointArithmeticType>
-        (fovy:T, _ aspect:T, _ zNear:T, _ ep:T = 0) -> Matrix4x4<T>
+        (_ fovy:T, _ aspect:T, _ zNear:T, _ ep:T = 0) -> Matrix4x4<T>
     {
         let range:T = SGLMath.SGLtan(fovy / 2) * zNear
         let left:T = -range * aspect
@@ -508,7 +508,7 @@ extension SGLMath
 
 
     public static func infinitePerspectiveRH<T:FloatingPointArithmeticType>
-        (fovy:T, _ aspect:T, _ zNear:T, _ ep:T = 0) -> Matrix4x4<T>
+        (_ fovy:T, _ aspect:T, _ zNear:T, _ ep:T = 0) -> Matrix4x4<T>
     {
         let range:T = SGLMath.SGLtan(fovy / 2) * zNear
         let left:T = -range * aspect
@@ -545,7 +545,7 @@ extension SGLMath
 
 
     public static func project<T:ArithmeticType>
-        (obj:Vector3<T>, _ model:Matrix4x4<T>, _ proj:Matrix4x4<T>, _ viewport:Vector4<T>) -> Vector3<T>
+        (_ obj:Vector3<T>, _ model:Matrix4x4<T>, _ proj:Matrix4x4<T>, _ viewport:Vector4<T>) -> Vector3<T>
     {
         var tmp = Vector4<T>(obj, 1)
         tmp = model * tmp
@@ -560,7 +560,7 @@ extension SGLMath
 
 
     public static func unproject<T:ArithmeticType>
-        (win:Vector3<T>, _ model:Matrix4x4<T>, _ proj:Matrix4x4<T>, _ viewport:Vector4<T>) -> Vector3<T>
+        (_ win:Vector3<T>, _ model:Matrix4x4<T>, _ proj:Matrix4x4<T>, _ viewport:Vector4<T>) -> Vector3<T>
     {
         var tmp:Vector4<T> = Vector4<T>(win, 1)
         tmp.x = (tmp.x - viewport[0]) / viewport[2]
@@ -575,7 +575,7 @@ extension SGLMath
 
 
     public static func pickMatrix<T:ArithmeticType>
-        (center:Vector2<T>, _ delta:Vector2<T>, _ viewport:Vector4<T>) -> Matrix4x4<T>
+        (_ center:Vector2<T>, _ delta:Vector2<T>, _ viewport:Vector4<T>) -> Matrix4x4<T>
     {
         assert(delta.x > 0 && delta.y > 0);
 
@@ -595,7 +595,7 @@ extension SGLMath
 
 
     public static func lookAt<T:FloatingPointArithmeticType>
-        (eye:Vector3<T>, _ center:Vector3<T>, _ up:Vector3<T>) -> Matrix4x4<T>
+        (_ eye:Vector3<T>, _ center:Vector3<T>, _ up:Vector3<T>) -> Matrix4x4<T>
     {
         if glmLeftHanded {
             return lookAtLH(eye, center, up)
@@ -606,7 +606,7 @@ extension SGLMath
 
 
     public static func lookAtLH<T:FloatingPointArithmeticType>
-        (eye:Vector3<T>, _ center:Vector3<T>, _ up:Vector3<T>) -> Matrix4x4<T>
+        (_ eye:Vector3<T>, _ center:Vector3<T>, _ up:Vector3<T>) -> Matrix4x4<T>
     {
         let f:Vector3<T> = normalize(center - eye)
         let s:Vector3<T> = normalize(cross(up, f))
@@ -627,7 +627,7 @@ extension SGLMath
 
 
     public static func lookAtRH<T:FloatingPointArithmeticType>
-        (eye:Vector3<T>, _ center:Vector3<T>, _ up:Vector3<T>) -> Matrix4x4<T>
+        (_ eye:Vector3<T>, _ center:Vector3<T>, _ up:Vector3<T>) -> Matrix4x4<T>
     {
         let f:Vector3<T> = normalize(center - eye)
         let s:Vector3<T> = normalize(cross(f, up))

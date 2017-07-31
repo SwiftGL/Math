@@ -58,8 +58,8 @@ public struct Matrix3x3<T:ArithmeticType> : MatrixType {
 
     public var debugDescription: String {
         return String(describing: type(of:self)) + "(" + [x,y,z].map{ (v:Vector3<T>) -> String in
-            "[" + [v.x,v.y,v.z].map{ (n:T) -> String in String(n) }.joinWithSeparator(", ") + "]"
-            }.joinWithSeparator(", ") + ")"
+            "[" + [v.x,v.y,v.z].map{ (n:T) -> String in String(describing: n) }.joined(separator:", ") + "]"
+            }.joined(separator:", ") + ")"
     }
 
     public var hashValue: Int {
@@ -288,98 +288,97 @@ public struct Matrix3x3<T:ArithmeticType> : MatrixType {
         )
     }
 
-}
+
+    public static func ==(m1: Matrix3x3<T>, m2: Matrix3x3<T>) -> Bool {
+        return m1.x == m2.x && m1.y == m2.y && m1.z == m2.z
+    }
 
 
-public func ==<T:ArithmeticType>(m1: Matrix3x3<T>, m2: Matrix3x3<T>) -> Bool {
-    return m1.x == m2.x && m1.y == m2.y && m1.z == m2.z
-}
+    public static func *(v: Vector3<T>, m: Matrix3x3<T>) -> Vector3<T> {
+        var x:T = v.x * m.x.x
+        x = x + v.y * m.x.y
+        x = x + v.z * m.x.z
+        var y:T = v.x * m.y.x
+        y = y + v.y * m.y.y
+        y = y + v.z * m.y.z
+        var z:T = v.x * m.z.x
+        z = z + v.y * m.z.y
+        z = z + v.z * m.z.z
+        return Vector3<T>(x,y,z)
+    }
 
 
-public func *<T:ArithmeticType>(v: Vector3<T>, m: Matrix3x3<T>) -> Vector3<T> {
-    var x:T = v.x * m.x.x
-    x = x + v.y * m.x.y
-    x = x + v.z * m.x.z
-    var y:T = v.x * m.y.x
-    y = y + v.y * m.y.y
-    y = y + v.z * m.y.z
-    var z:T = v.x * m.z.x
-    z = z + v.y * m.z.y
-    z = z + v.z * m.z.z
-    return Vector3<T>(x,y,z)
-}
+    public static func *(m: Matrix3x3<T>, v: Vector3<T>) -> Vector3<T> {
+        var rv:Vector3<T> = m.x * v.x
+        rv = rv + m.y * v.y
+        rv = rv + m.z * v.z
+        return rv
+    }
 
 
-public func *<T:ArithmeticType>(m: Matrix3x3<T>, v: Vector3<T>) -> Vector3<T> {
-    var rv:Vector3<T> = m.x * v.x
-    rv = rv + m.y * v.y
-    rv = rv + m.z * v.z
-    return rv
-}
+    public static func *(m1: Matrix3x3<T>, m2: Matrix2x3<T>) -> Matrix2x3<T> {
+        var x:Vector3<T> = m1.x * m2[0].x
+        x = x + m1.y * m2[0].y
+        x = x + m1.z * m2[0].z
+        var y:Vector3<T> = m1.x * m2[1].x
+        y = y + m1.y * m2[1].y
+        y = y + m1.z * m2[1].z
+        return Matrix2x3<T>(x, y)
+    }
 
 
-public func *<T:ArithmeticType>(m1: Matrix3x3<T>, m2: Matrix2x3<T>) -> Matrix2x3<T> {
-    var x:Vector3<T> = m1.x * m2[0].x
-    x = x + m1.y * m2[0].y
-    x = x + m1.z * m2[0].z
-    var y:Vector3<T> = m1.x * m2[1].x
-    y = y + m1.y * m2[1].y
-    y = y + m1.z * m2[1].z
-    return Matrix2x3<T>(x, y)
-}
+    public static func *(m1: Matrix3x3<T>, m2: Matrix3x3<T>) -> Matrix3x3<T> {
+        var x:Vector3<T> = m1.x * m2[0].x
+        x = x + m1.y * m2[0].y
+        x = x + m1.z * m2[0].z
+        var y:Vector3<T> = m1.x * m2[1].x
+        y = y + m1.y * m2[1].y
+        y = y + m1.z * m2[1].z
+        var z:Vector3<T> = m1.x * m2[2].x
+        z = z + m1.y * m2[2].y
+        z = z + m1.z * m2[2].z
+        return Matrix3x3<T>(x, y, z)
+    }
 
 
-public func *<T:ArithmeticType>(m1: Matrix3x3<T>, m2: Matrix3x3<T>) -> Matrix3x3<T> {
-    var x:Vector3<T> = m1.x * m2[0].x
-    x = x + m1.y * m2[0].y
-    x = x + m1.z * m2[0].z
-    var y:Vector3<T> = m1.x * m2[1].x
-    y = y + m1.y * m2[1].y
-    y = y + m1.z * m2[1].z
-    var z:Vector3<T> = m1.x * m2[2].x
-    z = z + m1.y * m2[2].y
-    z = z + m1.z * m2[2].z
-    return Matrix3x3<T>(x, y, z)
-}
+    public static func *(m1: Matrix3x3<T>, m2: Matrix4x3<T>) -> Matrix4x3<T> {
+        var x:Vector3<T> = m1.x * m2[0].x
+        x = x + m1.y * m2[0].y
+        x = x + m1.z * m2[0].z
+        var y:Vector3<T> = m1.x * m2[1].x
+        y = y + m1.y * m2[1].y
+        y = y + m1.z * m2[1].z
+        var z:Vector3<T> = m1.x * m2[2].x
+        z = z + m1.y * m2[2].y
+        z = z + m1.z * m2[2].z
+        var w:Vector3<T> = m1.x * m2[3].x
+        w = w + m1.y * m2[3].y
+        w = w + m1.z * m2[3].z
+        return Matrix4x3<T>(x, y, z, w)
+    }
 
 
-public func *<T:ArithmeticType>(m1: Matrix3x3<T>, m2: Matrix4x3<T>) -> Matrix4x3<T> {
-    var x:Vector3<T> = m1.x * m2[0].x
-    x = x + m1.y * m2[0].y
-    x = x + m1.z * m2[0].z
-    var y:Vector3<T> = m1.x * m2[1].x
-    y = y + m1.y * m2[1].y
-    y = y + m1.z * m2[1].z
-    var z:Vector3<T> = m1.x * m2[2].x
-    z = z + m1.y * m2[2].y
-    z = z + m1.z * m2[2].z
-    var w:Vector3<T> = m1.x * m2[3].x
-    w = w + m1.y * m2[3].y
-    w = w + m1.z * m2[3].z
-    return Matrix4x3<T>(x, y, z, w)
-}
+    public static func *=(m1: inout Matrix3x3<T>, m2: Matrix3x3<T>) {
+        m1 = m1 * m2
+    }
 
 
-public func *=<T:ArithmeticType>(m1: inout Matrix3x3<T>, m2: Matrix3x3<T>) {
-    m1 = m1 * m2
-}
+    public static func /(v: Vector3<T>, m: Matrix3x3<T>) -> Vector3<T> {
+        return v * m.inverse
+    }
 
 
-public func /<T:ArithmeticType>(v: Vector3<T>, m: Matrix3x3<T>) -> Vector3<T> {
-    return v * m.inverse
-}
+    public static func /(m: Matrix3x3<T>, v: Vector3<T>) -> Vector3<T> {
+        return m.inverse * v
+    }
 
 
-public func /<T:ArithmeticType>(m: Matrix3x3<T>, v: Vector3<T>) -> Vector3<T> {
-    return m.inverse * v
-}
+    public static func /(m1: Matrix3x3<T>, m2: Matrix3x3<T>) -> Matrix3x3<T> {
+        return m1 * m2.inverse
+    }
 
 
-public func /<T:ArithmeticType>(m1: Matrix3x3<T>, m2: Matrix3x3<T>) -> Matrix3x3<T> {
-    return m1 * m2.inverse
-}
-
-
-public func /=<T:ArithmeticType>(m1: inout Matrix3x3<T>, m2: Matrix3x3<T>) {
-    m1 = m1 / m2
+    public static func /=(m1: inout Matrix3x3<T>, m2: Matrix3x3<T>) {
+        m1 = m1 / m2
+    }
 }

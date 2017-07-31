@@ -43,6 +43,10 @@ public struct Complex<T:FloatingPointArithmeticType> : MatrixType, ExpressibleBy
     public var startIndex: Int { return 0 }
     public var endIndex: Int { return 2 }
 
+    public func index(after i: Int) -> Int {
+        return i + 1
+    }
+
     public subscript(index: Int) -> T {
         get {
 
@@ -157,42 +161,36 @@ public struct Complex<T:FloatingPointArithmeticType> : MatrixType, ExpressibleBy
         self.imag = op(x1[1], x2[1])
     }
 
-}
+    public static func==(x:Complex<T>, y:Complex<T>) -> Bool {
+        return x.real == y.real && x.imag == y.imag
+    }
 
+    public static func *(x1: Complex<T>, x2: Complex<T>) -> Complex<T> {
+        return Complex<T>(
+            x1.real * x2.real - x1.imag * x2.imag,
+            x1.imag * x2.real + x1.real * x2.imag
+        )
+    }
 
-public func==<T:FloatingPointArithmeticType>(x:Complex<T>, y:Complex<T>) -> Bool {
-    return x.real == y.real && x.imag == y.imag
-}
+    public static func /(x1: Complex<T>, x2: Complex<T>) -> Complex<T> {
+        let cd:T = x2.real * x2.real + x2.imag * x2.imag
+        let r:T = x1.real * x2.real + x1.imag * x2.imag
+        let i:T = x1.imag * x2.real - x1.real * x2.imag
+        return Complex<T>(r / cd, i / cd)
+    }
 
+    public static func /(x1: Complex<T>, x2: T) -> Complex<T> {
+        return Complex<T>(
+            x1.real / x2,
+            x1.imag / x2
+        )
+    }
 
-public func *<T:FloatingPointArithmeticType>(x1: Complex<T>, x2: Complex<T>) -> Complex<T> {
-    return Complex<T>(
-        x1.real * x2.real - x1.imag * x2.imag,
-        x1.imag * x2.real + x1.real * x2.imag
-    )
-}
-
-
-public func /<T:FloatingPointArithmeticType>(x1: Complex<T>, x2: Complex<T>) -> Complex<T> {
-    let cd:T = x2.real * x2.real + x2.imag * x2.imag
-    let r:T = x1.real * x2.real + x1.imag * x2.imag
-    let i:T = x1.imag * x2.real - x1.real * x2.imag
-    return Complex<T>(r / cd, i / cd)
-}
-
-
-public func /<T:FloatingPointArithmeticType>(x1: Complex<T>, x2: T) -> Complex<T> {
-    return Complex<T>(
-        x1.real / x2,
-        x1.imag / x2
-    )
-}
-
-
-public func /<T:FloatingPointArithmeticType>(x1: T, x2: Complex<T>) -> Complex<T> {
-    let cd = x2.real * x2.real + x2.imag * x2.imag
-    return Complex<T>(
-        (x1 * x2.real) / cd,
-        (-x1 * x2.imag) / cd
-    )
+    public static func /(x1: T, x2: Complex<T>) -> Complex<T> {
+        let cd = x2.real * x2.real + x2.imag * x2.imag
+        return Complex<T>(
+            (x1 * x2.real) / cd,
+            (-x1 * x2.imag) / cd
+        )
+    }
 }
