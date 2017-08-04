@@ -50,7 +50,7 @@ class Matrix4x4Tests: XCTestCase {
             vec4(0.3, 0.5, 0.7, 0.2),
             vec4(0.4, 0.3, 0.2, 0.6)
         )
-        let m2 = m1 * inverse(m1)
+        let m2 = m1 * m1.inverse
         XCTAssertEqualWithAccuracy(m2, mat4(), accuracy: 0.000001)
     }
 

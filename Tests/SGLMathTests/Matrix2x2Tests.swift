@@ -48,7 +48,7 @@ class Matrix2x2Tests: XCTestCase {
             vec3(0.2, 0.7, 0.5),
             vec3(0.3, 0.5, 0.7)
         )
-        let m2 = m1 * inverse(m1)
+        let m2 = m1 * m1.inverse
         XCTAssertEqualWithAccuracy(m2, mat3(), accuracy: 0.000001)
     }
 
