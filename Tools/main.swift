@@ -24,9 +24,9 @@
 
 import Foundation
 
-extension NSOutputStream
+extension OutputStream
 {
-    func write(string:String) {
+    func write(_ string:String) {
         if string.isEmpty {return}
         let encodedDataArray = [UInt8](string.utf8)
         write(encodedDataArray, maxLength: encodedDataArray.count)
@@ -34,7 +34,7 @@ extension NSOutputStream
 }
 
 
-func writeLicense(outstream:NSOutputStream)
+func writeLicense(_ outstream:OutputStream)
 {
     var s = "// WARNING: This file is generated. Modifications will be lost.\n\n"
     s += "// Copyright (c) 2015-2016 David Turnbull\n"
@@ -62,7 +62,7 @@ func writeLicense(outstream:NSOutputStream)
 }
 
 
-func writeSwizzle(out:NSOutputStream)
+func writeSwizzle(_ out:OutputStream)
 {
     writeLicense(out)
 
@@ -117,22 +117,22 @@ func writeSwizzle(out:NSOutputStream)
 }
 
 
-func writer(filename:String, _ generator:(outstream:NSOutputStream) -> Void)
+func writer(_ filename:String, _ generator:(OutputStream) -> Void)
 {
-    let outstream:NSOutputStream! = NSOutputStream(toFileAtPath: filename, append: false)
+    let outstream:OutputStream! = OutputStream(toFileAtPath: filename, append: false)
     outstream.open()
-    assert(outstream.streamStatus == .Open, "Unable to write \(filename)")
-    generator(outstream: outstream)
+    assert(outstream.streamStatus == .open, "Unable to write \(filename)")
+    generator(outstream)
     outstream.close()
 }
 
 // Got error from Xcode? Add $(SRCROOT)/Math to arguments in scheme.
 
-if (Process.argc != 2) {
+if (CommandLine.arguments.count != 2) {
     print("\nusage: main.swift path_to_root\n")
     exit(1)
 }
-let pathPrefix = Process.arguments[1]
+let pathPrefix = CommandLine.arguments[1]
 print("Working...")
 writer(pathPrefix + "/Sources/Swizzle.swift", writeSwizzle)
 print("Success")
