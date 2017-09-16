@@ -26,6 +26,13 @@ public struct Matrix3x3<T:ArithmeticType> : MatrixType {
 
     private var x:Vector3<T>, y:Vector3<T>, z:Vector3<T>
 
+    public var startIndex: Int { return 0 }
+    public var endIndex: Int { return 3 }
+
+    public func index(after i: Int) -> Int {
+        return i + 1
+    }
+
     public subscript(column: Int) -> Vector3<T> {
         get {
             switch(column) {

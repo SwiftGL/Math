@@ -32,6 +32,13 @@ public struct Vector2b : BooleanVectorType {
     public var s:Bool { get {return x} set {x = newValue} }
     public var t:Bool { get {return y} set {y = newValue} }
 
+    public var startIndex: Int { return 0 }
+    public var endIndex: Int { return 2 }
+
+    public func index(after i: Int) -> Int {
+        return i + 1
+    }
+
     public subscript(index: Int) -> Bool {
         get {
             switch(index) {

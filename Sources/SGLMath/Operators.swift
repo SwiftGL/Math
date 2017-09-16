@@ -284,7 +284,7 @@ public func %=<T:MatrixType>(x: inout T, s: T.Element) {
 
 // Unchecked Integer Operators
 
-public func &+<T:MatrixType>(v1: T, v2: T) -> T where T.Element:BinaryInteger {
+public func &+<T:MatrixType>(v1: T, v2: T) -> T where T.Element:IntegerArithmetic {
     #if !os(Linux)
         switch (v1) {
         case is Vector2<Int32>, is Vector2<UInt32> :
@@ -298,15 +298,15 @@ public func &+<T:MatrixType>(v1: T, v2: T) -> T where T.Element:BinaryInteger {
     return T(v1, v2, &+)
 }
 
-public func &+<T:MatrixType>(s: T.Element, v: T) -> T where T.Element:BinaryInteger {
+public func &+<T:MatrixType>(s: T.Element, v: T) -> T where T.Element:IntegerArithmetic {
     return T(s, v, &+)
 }
 
-public func &+<T:MatrixType>(v: T, s: T.Element) -> T where T.Element:BinaryInteger {
+public func &+<T:MatrixType>(v: T, s: T.Element) -> T where T.Element:IntegerArithmetic {
     return T(v, s, &+)
 }
 
-public func &-<T:MatrixType>(v1: T, v2: T) -> T where T.Element:BinaryInteger {
+public func &-<T:MatrixType>(v1: T, v2: T) -> T where T.Element:IntegerArithmetic {
     #if !os(Linux)
         switch (v1) {
         case is Vector2<Int32>, is Vector2<UInt32> :
@@ -320,15 +320,15 @@ public func &-<T:MatrixType>(v1: T, v2: T) -> T where T.Element:BinaryInteger {
     return T(v1, v2, &-)
 }
 
-public func &-<T:MatrixType>(s: T.Element, v: T) -> T where T.Element:BinaryInteger {
+public func &-<T:MatrixType>(s: T.Element, v: T) -> T where T.Element:IntegerArithmetic {
     return T(s, v, &-)
 }
 
-public func &-<T:MatrixType>(v: T, s: T.Element) -> T where T.Element:BinaryInteger {
+public func &-<T:MatrixType>(v: T, s: T.Element) -> T where T.Element:IntegerArithmetic {
     return T(v, s, &-)
 }
 
-public func &*<T:MatrixType>(v1: T, v2: T) -> T where T.Element:BinaryInteger {
+public func &*<T:MatrixType>(v1: T, v2: T) -> T where T.Element:IntegerArithmetic {
     #if !os(Linux)
         switch (v1) {
         case is Vector2<Int32>, is Vector2<UInt32> :
@@ -342,7 +342,7 @@ public func &*<T:MatrixType>(v1: T, v2: T) -> T where T.Element:BinaryInteger {
     return T(v1, v2, &*)
 }
 
-public func &*<T:MatrixType>(s: T.Element, v: T) -> T where T.Element:BinaryInteger {
+public func &*<T:MatrixType>(s: T.Element, v: T) -> T where T.Element:IntegerArithmetic {
     #if !os(Linux)
         switch (v) {
         case is Vector2<Int32>, is Vector2<UInt32> :
@@ -356,7 +356,7 @@ public func &*<T:MatrixType>(s: T.Element, v: T) -> T where T.Element:BinaryInte
     return T(s, v, &*)
 }
 
-public func &*<T:MatrixType>(v: T, s: T.Element) -> T where T.Element:BinaryInteger {
+public func &*<T:MatrixType>(v: T, s: T.Element) -> T where T.Element:IntegerArithmetic {
     #if !os(Linux)
         switch (v) {
         case is Vector2<Int32>, is Vector2<UInt32> :
@@ -453,11 +453,11 @@ public prefix func ~<T:MatrixType>(v: T) -> T where T.Element:BitsOperationsType
 
 // Signed Numbers Only
 
-public prefix func +<T:MatrixType>(v: T) -> T where T.Element:SignedNumeric {
+public prefix func +<T:MatrixType>(v: T) -> T where T.Element:SignedNumber {
     return v
 }
 
-public prefix func -<T:MatrixType>(x: T) -> T where T.Element:SignedNumeric {
+public prefix func -<T:MatrixType>(x: T) -> T where T.Element:SignedNumber {
     #if !os(Linux)
         switch (x) {
         case is Matrix2x2<Float> :
