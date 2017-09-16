@@ -29,7 +29,7 @@ extension OutputStream
     func write(_ string:String) {
         if string.isEmpty {return}
         let encodedDataArray = [UInt8](string.utf8)
-        write(encodedDataArray, maxLength: encodedDataArray.count)
+        let _ = write(encodedDataArray, maxLength: encodedDataArray.count)
     }
 }
 
