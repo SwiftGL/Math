@@ -31,13 +31,6 @@ public struct Matrix4x2<T:ArithmeticType> : MatrixType {
 
     private var x:Vector2<T>, y:Vector2<T>, z:Vector2<T>, w:Vector2<T>
 
-    public var startIndex: Int { return 0 }
-    public var endIndex: Int { return 4 }
-
-    public func index(after i: Int) -> Int {
-        return i + 1
-    }
-
     public subscript(column: Int) -> Vector2<T> {
         get {
             switch(column) {

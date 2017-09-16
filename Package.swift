@@ -34,5 +34,6 @@ let package = Package(
     targets: [
         .target(name: "SGLMath", dependencies: []),
         .target(name: "Tools", dependencies: []),
+        .testTarget(name: "SGLMathTests", dependencies: ["SGLMath"]),
     ]
 )
