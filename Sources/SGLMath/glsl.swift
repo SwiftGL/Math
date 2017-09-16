@@ -184,11 +184,11 @@ public func inversesqrt<genType:VectorType>(_ x:genType) -> genType where genTyp
 
 // Section 8.3 Common Functions
 
-public func abs<genType:VectorType>(_ x:genType) -> genType where genType.Element:AbsoluteValuable {
+public func abs<genType:VectorType>(_ x:genType) -> genType where genType.Element:SignedNumeric {
     return genType(x, abs)
 }
 
-public func sign<genType:VectorType>(_ x:genType) -> genType where genType.Element:SignedNumber {
+public func sign<genType:VectorType>(_ x:genType) -> genType where genType.Element:SignedNumeric {
     return genType(x) { $0 == 0 ? 0 : $0 < 0 ? -1 : 1 }
 }
 
@@ -678,11 +678,11 @@ public func notEqual<genType:VectorType>(_ x:genType, _ y:genType) -> genType.Bo
     return genType.BooleanVector(x, y, !=)
 }
 
-public func any<bvec:BooleanVectorType>(_ x:bvec) -> bvec.Generator.Element where bvec.Generator.Element == Bool {
+public func any<bvec:BooleanVectorType>(_ x:bvec) -> bvec.Iterator.Element where bvec.Iterator.Element == Bool {
     return x.reduce(false) { $0 || $1 }
 }
 
-public func all<bvec:BooleanVectorType>(_ x:bvec) -> bvec.Generator.Element where bvec.Generator.Element == Bool {
+public func all<bvec:BooleanVectorType>(_ x:bvec) -> bvec.Iterator.Element where bvec.Iterator.Element == Bool {
     return x.reduce(true) { $0 && $1 }
 }
 

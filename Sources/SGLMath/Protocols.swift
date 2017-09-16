@@ -74,8 +74,7 @@ extension UInt64: BitsOperationsType {}
 
 // Anything not a plain single scalar is considered a Matrix.
 // This includes Vectors, Complex, and Quaternion.
-public protocol MatrixType : MutableCollection, Hashable, CustomDebugStringConvertible {
-    associatedtype Element:ArithmeticType
+public protocol MatrixType : MutableCollection, Hashable, CustomDebugStringConvertible where Element:ArithmeticType {
     init()
     init(_: Self, _:(_:Element) -> Element)
     init(_: Self, _: Self, _:(_:Element, _:Element) -> Element)
