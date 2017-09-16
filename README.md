@@ -6,7 +6,7 @@ To use, include dependency in your `Package.swift`:
 ```swift
 let package = Package(
     dependencies: [
-        .Package(url: "https://github.com/SwiftGL/Math.git", majorVersion: 1)
+        .Package(url: "https://github.com/SwiftGL/Math.git", majorVersion: 2)
     ]
 )
 ```
@@ -49,3 +49,8 @@ transformations compatible with glm.
 ```swift
 let projectionMatrix = mat4.perspective(fov, aspect, clip.near, clip.far)
 ```
+
+## Regenerate Swizzle.swift
+
+From the root directory of the package execute:
+`./.build/x86_64-unknown-linux/debug/swizgen`

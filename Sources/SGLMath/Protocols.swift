@@ -20,29 +20,7 @@
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
 
-public protocol ArithmeticType : Hashable, Comparable, ExpressibleByIntegerLiteral {
-    init(_: Double)
-    init(_: Float)
-    init(_: Int)
-    init(_: UInt)
-    init(_: Int8)
-    init(_: UInt8)
-    init(_: Int16)
-    init(_: UInt16)
-    init(_: Int32)
-    init(_: UInt32)
-    init(_: Int64)
-    init(_: UInt64)
-    static func +(_: Self, _: Self) -> Self
-    static func +=(_: inout Self, _: Self)
-    static func -(_: Self, _: Self) -> Self
-    static func -=(_: inout Self, _: Self)
-    static func *(_: Self, _: Self) -> Self
-    static func *=(_: inout Self, _: Self)
-    static func /(_: Self, _: Self) -> Self
-    static func /=(_: inout Self, _: Self)
-    static func %(_: Self, _: Self) -> Self
-    static func %=(_: inout Self, _: Self)
+public protocol ArithmeticType : Numeric, Hashable, Strideable {
 }
 
 public protocol FloatingPointArithmeticType : ArithmeticType, FloatingPoint, SignedNumber, ExpressibleByFloatLiteral {}

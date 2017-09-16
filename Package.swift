@@ -1,3 +1,5 @@
+// swift-tools-version:4.0
+
 // Copyright (c) 2015-2016 David Turnbull
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -19,9 +21,18 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-
 import PackageDescription
 
 let package = Package(
-    name: "SGLMath"
+    name: "SGLMath",
+    products: [
+        .library(name: "SGLMath", targets: ["SGLMath"]),
+        .executable(name: "swizgen", targets: ["Tools"]),
+    ],
+    dependencies: [
+    ],
+    targets: [
+        .target(name: "SGLMath", dependencies: []),
+        .target(name: "Tools", dependencies: []),
+    ]
 )
