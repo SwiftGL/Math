@@ -537,117 +537,117 @@ public func matrixCompMult<mat:MatrixType>(_ x:mat, _ y:mat) -> mat {
     return mat(x, y, *)
 }
 
-public func outerProduct<T:ArithmeticType>(_ c:Vector2<T>, _ r:Vector2<T>) -> Matrix2x2<T> {
+public func outerProduct<T>(_ c:Vector2<T>, _ r:Vector2<T>) -> Matrix2x2<T> {
     return Matrix2x2(
         c * r[0], c * r[1]
     )
 }
 
-public func outerProduct<T:ArithmeticType>(_ c:Vector3<T>, _ r:Vector2<T>) -> Matrix2x3<T> {
+public func outerProduct<T>(_ c:Vector3<T>, _ r:Vector2<T>) -> Matrix2x3<T> {
     return Matrix2x3(
         c * r[0], c * r[1]
     )
 }
 
-public func outerProduct<T:ArithmeticType>(_ c:Vector4<T>, _ r:Vector2<T>) -> Matrix2x4<T> {
+public func outerProduct<T>(_ c:Vector4<T>, _ r:Vector2<T>) -> Matrix2x4<T> {
     return Matrix2x4(
         c * r[0], c * r[1]
     )
 }
 
-public func outerProduct<T:ArithmeticType>(_ c:Vector2<T>, _ r:Vector3<T>) -> Matrix3x2<T> {
+public func outerProduct<T>(_ c:Vector2<T>, _ r:Vector3<T>) -> Matrix3x2<T> {
     return Matrix3x2(
         c * r[0], c * r[1], c * r[2]
     )
 }
 
-public func outerProduct<T:ArithmeticType>(_ c:Vector3<T>, _ r:Vector3<T>) -> Matrix3x3<T> {
+public func outerProduct<T>(_ c:Vector3<T>, _ r:Vector3<T>) -> Matrix3x3<T> {
     return Matrix3x3(
         c * r[0], c * r[1], c * r[2]
     )
 }
 
-public func outerProduct<T:ArithmeticType>(_ c:Vector4<T>, _ r:Vector3<T>) -> Matrix3x4<T> {
+public func outerProduct<T>(_ c:Vector4<T>, _ r:Vector3<T>) -> Matrix3x4<T> {
     return Matrix3x4(
         c * r[0], c * r[1], c * r[2]
     )
 }
 
-public func outerProduct<T:ArithmeticType>(_ c:Vector2<T>, _ r:Vector4<T>) -> Matrix4x2<T> {
+public func outerProduct<T>(_ c:Vector2<T>, _ r:Vector4<T>) -> Matrix4x2<T> {
     return Matrix4x2(
         c * r[0], c * r[1], c * r[2], c * r[3]
     )
 }
 
-public func outerProduct<T:ArithmeticType>(_ c:Vector3<T>, _ r:Vector4<T>) -> Matrix4x3<T> {
+public func outerProduct<T>(_ c:Vector3<T>, _ r:Vector4<T>) -> Matrix4x3<T> {
     return Matrix4x3(
         c * r[0], c * r[1], c * r[2], c * r[3]
     )
 }
 
-public func outerProduct<T:ArithmeticType>(_ c:Vector4<T>, _ r:Vector4<T>) -> Matrix4x4<T> {
+public func outerProduct<T>(_ c:Vector4<T>, _ r:Vector4<T>) -> Matrix4x4<T> {
     return Matrix4x4(
         c * r[0], c * r[1], c * r[2], c * r[3]
     )
 }
 
-public func transpose<T:ArithmeticType>(_ m:Matrix2x2<T>) -> Matrix2x2<T> {
+public func transpose<T>(_ m:Matrix2x2<T>) -> Matrix2x2<T> {
     return m.transpose
 }
 
-public func transpose<T:ArithmeticType>(_ m:Matrix2x3<T>) -> Matrix3x2<T> {
+public func transpose<T>(_ m:Matrix2x3<T>) -> Matrix3x2<T> {
     return m.transpose
 }
 
-public func transpose<T:ArithmeticType>(_ m:Matrix2x4<T>) -> Matrix4x2<T> {
+public func transpose<T>(_ m:Matrix2x4<T>) -> Matrix4x2<T> {
     return m.transpose
 }
 
-public func transpose<T:ArithmeticType>(_ m:Matrix3x2<T>) -> Matrix2x3<T> {
+public func transpose<T>(_ m:Matrix3x2<T>) -> Matrix2x3<T> {
     return m.transpose
 }
 
-public func transpose<T:ArithmeticType>(_ m:Matrix3x3<T>) -> Matrix3x3<T> {
+public func transpose<T>(_ m:Matrix3x3<T>) -> Matrix3x3<T> {
     return m.transpose
 }
 
-public func transpose<T:ArithmeticType>(_ m:Matrix3x4<T>) -> Matrix4x3<T> {
+public func transpose<T>(_ m:Matrix3x4<T>) -> Matrix4x3<T> {
     return m.transpose
 }
 
-public func transpose<T:ArithmeticType>(_ m:Matrix4x2<T>) -> Matrix2x4<T> {
+public func transpose<T>(_ m:Matrix4x2<T>) -> Matrix2x4<T> {
     return m.transpose
 }
 
-public func transpose<T:ArithmeticType>(_ m:Matrix4x3<T>) -> Matrix3x4<T> {
+public func transpose<T>(_ m:Matrix4x3<T>) -> Matrix3x4<T> {
     return m.transpose
 }
 
-public func transpose<T:ArithmeticType>(_ m:Matrix4x4<T>) -> Matrix4x4<T> {
+public func transpose<T>(_ m:Matrix4x4<T>) -> Matrix4x4<T> {
     return m.transpose
 }
 
-public func determinant<T:ArithmeticType>(_ m:Matrix2x2<T>) -> T {
+public func determinant<T>(_ m:Matrix2x2<T>) -> T {
     return m.determinant
 }
 
-public func determinant<T:ArithmeticType>(_ m:Matrix3x3<T>) -> T {
+public func determinant<T>(_ m:Matrix3x3<T>) -> T {
     return m.determinant
 }
 
-public func determinant<T:ArithmeticType>(_ m:Matrix4x4<T>) -> T {
+public func determinant<T>(_ m:Matrix4x4<T>) -> T {
     return m.determinant
 }
 
-public func inverse<T:ArithmeticType>(_ m:Matrix2x2<T>) -> Matrix2x2<T> {
+public func inverse<T>(_ m:Matrix2x2<T>) -> Matrix2x2<T> {
     return m.inverse
 }
 
-public func inverse<T:ArithmeticType>(_ m:Matrix3x3<T>) -> Matrix3x3<T> {
+public func inverse<T>(_ m:Matrix3x3<T>) -> Matrix3x3<T> {
     return m.inverse
 }
 
-public func inverse<T:ArithmeticType>(_ m:Matrix4x4<T>) -> Matrix4x4<T> {
+public func inverse<T>(_ m:Matrix4x4<T>) -> Matrix4x4<T> {
     return m.inverse
 }
 

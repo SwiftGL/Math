@@ -64,7 +64,7 @@ public typealias umat4x4 = Matrix4x4<UInt32>
 extension SGLMath
 {
 
-    public static func translate<T:ArithmeticType>(_ m:Matrix4x4<T>, _ v:Vector3<T>) -> Matrix4x4<T>
+    public static func translate<T>(_ m:Matrix4x4<T>, _ v:Vector3<T>) -> Matrix4x4<T>
     {
         var m3:Vector4<T> = m[0] * v[0]
         m3 += m[1] * v[1]
@@ -157,7 +157,7 @@ extension SGLMath
     }
 
 
-    public static func scale<T:ArithmeticType>(_ m:Matrix4x4<T>, _ v:Vector3<T>) -> Matrix4x4<T>
+    public static func scale<T>(_ m:Matrix4x4<T>, _ v:Vector3<T>) -> Matrix4x4<T>
     {
         return Matrix4x4<T>(
             m[0] * v[0],
@@ -544,7 +544,7 @@ extension SGLMath
     }
 
 
-    public static func project<T:ArithmeticType>
+    public static func project<T>
         (_ obj:Vector3<T>, _ model:Matrix4x4<T>, _ proj:Matrix4x4<T>, _ viewport:Vector4<T>) -> Vector3<T>
     {
         var tmp = Vector4<T>(obj, 1)
@@ -559,7 +559,7 @@ extension SGLMath
     }
 
 
-    public static func unproject<T:ArithmeticType>
+    public static func unproject<T>
         (_ win:Vector3<T>, _ model:Matrix4x4<T>, _ proj:Matrix4x4<T>, _ viewport:Vector4<T>) -> Vector3<T>
     {
         var tmp:Vector4<T> = Vector4<T>(win, 1)
@@ -574,7 +574,7 @@ extension SGLMath
     }
 
 
-    public static func pickMatrix<T:ArithmeticType>
+    public static func pickMatrix<T>
         (_ center:Vector2<T>, _ delta:Vector2<T>, _ viewport:Vector4<T>) -> Matrix4x4<T>
     {
         assert(delta.x > 0 && delta.y > 0);
