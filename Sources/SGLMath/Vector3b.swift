@@ -34,13 +34,6 @@ public struct Vector3b : BooleanVectorType {
     public var t:Bool { get {return y} set {y = newValue} }
     public var p:Bool { get {return z} set {z = newValue} }
 
-    public var startIndex: Int { return 0 }
-    public var endIndex: Int { return 3 }
-
-    public func index(after i: Int) -> Int {
-        return i + 1
-    }
-
     public subscript(index: Int) -> Bool {
         get {
 

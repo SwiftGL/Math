@@ -21,18 +21,14 @@
 
 
 public protocol ArithmeticType : Numeric, Hashable, Strideable {
+    static func /(a: Self, b: Self) -> Self
 }
 
-public protocol FloatingPointArithmeticType : ArithmeticType, FloatingPoint, SignedNumber, ExpressibleByFloatLiteral {}
+public protocol FloatingPointArithmeticType : ArithmeticType, FloatingPoint, ExpressibleByFloatLiteral {}
 extension Double: FloatingPointArithmeticType {}
 extension Float: FloatingPointArithmeticType {}
 
-// Swift didn't put these in BitwiseOperationsType
-public protocol BitsOperationsType : ArithmeticType, BitwiseOperations {
-    static func <<(_: Self, _: Self) -> Self
-    static func <<=(_: inout Self, _: Self)
-    static func >>(_: Self, _: Self) -> Self
-    static func >>=(_: inout Self, _: Self)
+public protocol BitsOperationsType : ArithmeticType, BinaryInteger {
 }
 extension Int: BitsOperationsType {}
 extension UInt: BitsOperationsType {}
@@ -48,8 +44,8 @@ extension UInt64: BitsOperationsType {}
 
 // Anything not a plain single scalar is considered a Matrix.
 // This includes Vectors, Complex, and Quaternion.
-public protocol MatrixType : MutableCollection, Hashable, Equatable, CustomDebugStringConvertible {
-    associatedtype Element:ArithmeticType
+public protocol MatrixType : Hashable, CustomDebugStringConvertible {
+    associatedtype Element : ArithmeticType
     init()
     init(_: Self, _:(_:Element) -> Element)
     init(_: Self, _: Self, _:(_:Element, _:Element) -> Element)
@@ -107,7 +103,7 @@ public protocol VectorType : MatrixType, ExpressibleByArrayLiteral {
 }
 
 // This protocol is only Vector2b, Vector3b, and Vector4b
-public protocol BooleanVectorType : MutableCollection, Hashable, Equatable, CustomDebugStringConvertible {
+public protocol BooleanVectorType : Hashable, CustomDebugStringConvertible {
     associatedtype BooleanVector
     subscript(_:Int) -> Bool { get set }
     init(_: Self, _:(_:Bool) -> Bool)

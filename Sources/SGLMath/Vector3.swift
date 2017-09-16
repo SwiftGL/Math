@@ -39,13 +39,6 @@ public struct Vector3<T:ArithmeticType> : VectorType {
     public var t:T { get {return y} set {y = newValue} }
     public var p:T { get {return z} set {z = newValue} }
 
-    public var startIndex: Int { return 0 }
-    public var endIndex: Int { return 3 }
-
-    public func index(after i: Int) -> Int {
-        return i + 1
-    }
-
     public subscript(index: Int) -> T {
         get {
 

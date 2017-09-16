@@ -36,13 +36,6 @@ public struct Vector4b : BooleanVectorType {
     public var p:Bool { get {return z} set {z = newValue} }
     public var q:Bool { get {return w} set {w = newValue} }
 
-    public var startIndex: Int { return 0 }
-    public var endIndex: Int { return 4 }
-
-    public func index(after i: Int) -> Int {
-        return i + 1
-    }
-
     public subscript(index: Int) -> Bool {
         get {
 
