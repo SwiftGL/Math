@@ -37,16 +37,16 @@ public struct Vector2<T:ArithmeticType> : VectorType {
     public var s:T { get {return x} set {x = newValue} }
     public var t:T { get {return y} set {y = newValue} }
 
-    public var startIndex: Int { return 0 }
-    public var endIndex: Int { return 2 }
+    public var elements: [Element] {
+        return [x, y]
+    }
 
-    public func index(after i: Int) -> Int {
-        return i + 1
+    public func makeIterator() -> IndexingIterator<Array<Element>> {
+        return elements.makeIterator()
     }
 
     public subscript(index: Int) -> T {
         get {
-
             switch(index) {
             case 0: return x
             case 1: return y

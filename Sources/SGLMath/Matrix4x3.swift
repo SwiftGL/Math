@@ -47,6 +47,14 @@ public struct Matrix4x3<T:ArithmeticType> : MatrixType {
         }
     }
 
+    public var elements: [Element] {
+        return Array([x.elements, y.elements, z.elements, w.elements].joined())
+    }
+
+    public func makeIterator() -> IndexingIterator<Array<Element>> {
+        return elements.makeIterator()
+    }
+
     public subscript(column:Int, row:Int) -> T {
         return self[column][row]
     }

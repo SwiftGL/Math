@@ -40,16 +40,16 @@ public struct Complex<T:FloatingPointArithmeticType> : MatrixType, ExpressibleBy
     public var real:T
     public var imag:T
 
-    public var startIndex: Int { return 0 }
-    public var endIndex: Int { return 2 }
+    public var elements: [Element] {
+        return [real, imag]
+    }
 
-    public func index(after i: Int) -> Int {
-        return i + 1
+    public func makeIterator() -> IndexingIterator<Array<Element>> {
+        return elements.makeIterator()
     }
 
     public subscript(index: Int) -> T {
         get {
-
             switch(index) {
             case 0: return real
             case 1: return imag

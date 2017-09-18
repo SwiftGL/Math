@@ -41,16 +41,16 @@ public struct Vector4<T:ArithmeticType> : VectorType {
     public var p:T { get {return z} set {z = newValue} }
     public var q:T { get {return w} set {w = newValue} }
 
-    public var startIndex: Int { return 0 }
-    public var endIndex: Int { return 4 }
+    public var elements: [Element] {
+        return [x, y, z, w]
+    }
 
-    public func index(after i: Int) -> Int {
-        return i + 1
+    public func makeIterator() -> IndexingIterator<Array<Element>> {
+        return elements.makeIterator()
     }
 
     public subscript(index: Int) -> T {
         get {
-
             switch(index) {
             case 0: return x
             case 1: return y

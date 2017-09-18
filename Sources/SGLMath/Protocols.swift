@@ -74,8 +74,7 @@ extension UInt64: BitsOperationsType {}
 
 // Anything not a plain single scalar is considered a Matrix.
 // This includes Vectors, Complex, and Quaternion.
-public protocol MatrixType : Hashable, CustomDebugStringConvertible {
-    associatedtype Element:ArithmeticType
+public protocol MatrixType : Hashable, CustomDebugStringConvertible, Sequence where Element:ArithmeticType {
     init()
     init(_: Self, _:(_:Element) -> Element)
     init(_: Self, _: Self, _:(_:Element, _:Element) -> Element)
@@ -106,6 +105,7 @@ public protocol MatrixType : Hashable, CustomDebugStringConvertible {
     static func %(_: Element, _: Self) -> Self
     static func %(_: Self, _: Element) -> Self
     static func %=(_: inout Self, _: Element)
+    var elements: [Element] { get }
 }
 
 // This protocol is only Vector2, Vector3, and Vector4
@@ -133,7 +133,7 @@ public protocol VectorType : MatrixType, ExpressibleByArrayLiteral {
 }
 
 // This protocol is only Vector2b, Vector3b, and Vector4b
-public protocol BooleanVectorType : MutableCollection, Hashable, CustomDebugStringConvertible {
+public protocol BooleanVectorType : Hashable, CustomDebugStringConvertible, Sequence {
     associatedtype BooleanVector
     subscript(_:Int) -> Bool { get set }
     init(_: Self, _:(_:Bool) -> Bool)

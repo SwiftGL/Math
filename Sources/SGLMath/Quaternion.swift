@@ -26,16 +26,16 @@ public struct Quaternion<T:FloatingPointArithmeticType> : MatrixType, Expressibl
 
     public var x:T, y:T, z:T, w:T
 
-    public var startIndex: Int { return 0 }
-    public var endIndex: Int { return 4 }
+    public var elements: [Element] {
+        return [x, y, z, w]
+    }
 
-    public func index(after i: Int) -> Int {
-        return i + 1
+    public func makeIterator() -> IndexingIterator<Array<Element>> {
+        return elements.makeIterator()
     }
 
     public subscript(index: Int) -> T {
         get {
-
             switch(index) {
             case 0: return x
             case 1: return y
