@@ -411,12 +411,11 @@ public func unpackSnorm2x16(_ p:UInt32) -> vec2 {
 }
 
 public func unpackUnorm4x8(_ p:UInt32) -> vec4 {
-    let r = vec4(
-        Float(p & 0xff),
-        Float(p >> 8 & 0xff),
-        Float(p >> 16 & 0xff),
-        Float(p >> 24 & 0xff)
-    )
+    let x = Float(p & 0xff)
+    let y = Float(p >> 8 & 0xff)
+    let z = Float(p >> 16 & 0xff)
+    let w = Float(p >> 24 & 0xff)
+    let r = vec4(x, y, z, w)
     return r / 0xff
 }
 

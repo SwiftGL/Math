@@ -36,7 +36,8 @@ public final class SGLMath {
     // https://en.wikipedia.org/wiki/MurmurHash
     public static func hash(_ nums: Int...) -> Int
     {
-        if MemoryLayout<Int>.size == 8 { // 64 bit
+        #if !arch(i386) && !arch(arm)
+            // 64 bit
             func rotl(_ x:UInt, _ r:UInt) -> UInt {
                 return (x << r) | (x >> (64 - r))
             }
@@ -83,7 +84,8 @@ public final class SGLMath {
             h1 = h1 &+ h2
             h2 = h2 &+ h1
             return Int(bitPattern: h1)
-        } else { // 32 bit
+        #else
+            // 32 bit
             let c1:UInt = 0xcc9e2d51
             let c2:UInt = 0x1b873593
             var h1:UInt = c1 ^ UInt(nums.count)
@@ -103,7 +105,7 @@ public final class SGLMath {
             h1 = h1 &* 0xc2b2ae35
             h1 ^= h1 >> 16
             return Int(bitPattern: h1)
-        }
+        #endif
     }
 
     public static func SGLsin<T:FloatingPointArithmeticType>(_ angle:T) -> T {
