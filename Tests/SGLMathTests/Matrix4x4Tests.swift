@@ -19,7 +19,6 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-
 import XCTest
 import SGLMath
 
@@ -82,7 +81,6 @@ class Matrix4x4Tests: XCTestCase {
         )
         XCTAssertEqualWithAccuracy(m0 * m1, m2, accuracy: 0.00001)
     }
-    
 
     func testMultiplyVector() {
         let m0 = mat4(
@@ -127,6 +125,6 @@ class Matrix4x4Tests: XCTestCase {
         ("testDivide", testDivide),
         ("testMultiplyWith2x4", testMultiplyWith2x4),
         ("testMultiplyVector", testMultiplyVector),
-        ("testMultiArray", testMultiArray),
+        ("testMultiArray", testMultiArray)
     ]
 }

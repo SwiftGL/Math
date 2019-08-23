@@ -21,21 +21,17 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-
 import Foundation
 
-extension OutputStream
-{
-    func write(_ string:String) {
+extension OutputStream {
+    func write(_ string: String) {
         if string.isEmpty {return}
         let encodedDataArray = [UInt8](string.utf8)
-        let _ = write(encodedDataArray, maxLength: encodedDataArray.count)
+        _ = write(encodedDataArray, maxLength: encodedDataArray.count)
     }
 }
 
-
-func writeLicense(_ outstream:OutputStream)
-{
+func writeLicense(_ outstream: OutputStream) {
     var s = "// WARNING: This file is generated. Modifications will be lost.\n\n"
     s += "// Copyright (c) 2015-2016 David Turnbull\n"
     s += "//\n"
@@ -61,9 +57,7 @@ func writeLicense(_ outstream:OutputStream)
     outstream.write(s)
 }
 
-
-func writeSwizzle(_ out:OutputStream)
-{
+func writeSwizzle(_ out: OutputStream) {
     writeLicense(out)
 
     let vname = ["", "", "Vector2", "Vector3", "Vector4"]
@@ -105,7 +99,6 @@ func writeSwizzle(_ out:OutputStream)
                                 out.write("set { \(e[0][e1]) = newValue.x; \(e[0][e2]) = newValue.y; \(e[0][e3]) = newValue.z; \(e[0][e4]) = newValue.w } ")
                                 out.write("}\n")
 
-
                             }
                         }
                     }
@@ -116,10 +109,8 @@ func writeSwizzle(_ out:OutputStream)
     }
 }
 
-
-func writer(_ filename:String, _ generator:(OutputStream) -> Void)
-{
-    let outstream:OutputStream! = OutputStream(toFileAtPath: filename, append: false)
+func writer(_ filename: String, _ generator: (OutputStream) -> Void) {
+    let outstream: OutputStream! = OutputStream(toFileAtPath: filename, append: false)
     outstream.open()
     assert(outstream.streamStatus == .open, "Unable to write \(filename)")
     generator(outstream)

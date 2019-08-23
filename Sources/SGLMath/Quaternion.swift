@@ -19,12 +19,11 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-
-public struct Quaternion<T:FloatingPointArithmeticType> : MatrixType, ExpressibleByArrayLiteral {
+public struct Quaternion<T: FloatingPointArithmeticType>: MatrixType, ExpressibleByArrayLiteral {
 
     public typealias Element = T
 
-    public var x:T, y:T, z:T, w:T
+    public var x: T, y: T, z: T, w: T
 
     public var elements: [Element] {
         return [x, y, z, w]
@@ -56,7 +55,7 @@ public struct Quaternion<T:FloatingPointArithmeticType> : MatrixType, Expressibl
     }
 
     public var debugDescription: String {
-        return String(describing: type(of:self)) + "(x:\(x), y:\(y), z:\(z), w:\(w))"
+        return String(describing: type(of: self)) + "(x:\(x), y:\(y), z:\(z), w:\(w))"
     }
 
     public var hashValue: Int {
@@ -70,14 +69,14 @@ public struct Quaternion<T:FloatingPointArithmeticType> : MatrixType, Expressibl
         self.w = 0
     }
 
-    public init (_ v:T) {
+    public init (_ v: T) {
         self.x = v
         self.y = v
         self.z = v
         self.w = v
     }
 
-    public init(_ array:[T]) {
+    public init(_ array: [T]) {
         precondition(array.count == 4, "Quaternion requires a 4-element array")
         self.x = array[0]
         self.y = array[1]
@@ -89,69 +88,68 @@ public struct Quaternion<T:FloatingPointArithmeticType> : MatrixType, Expressibl
         self.init(elements)
     }
 
-    public init (_ x:T, _ y:T, _ z:T, _ w:T) {
+    public init (_ x: T, _ y: T, _ z: T, _ w: T) {
         self.x = x
         self.y = y
         self.z = z
         self.w = w
     }
 
-    public init (x:T, y:T, z:T, w:T) {
+    public init (x: T, y: T, z: T, w: T) {
         self.x = x
         self.y = y
         self.z = z
         self.w = w
     }
 
-    public init (_ q:Quaternion<T>) {
+    public init (_ q: Quaternion<T>) {
         self.x = q.x
         self.y = q.y
         self.z = q.z
         self.w = q.w
     }
 
-    public init (_ q:Quaternion<Double>) {
+    public init (_ q: Quaternion<Double>) {
         self.x = T(q.x)
         self.y = T(q.y)
         self.z = T(q.z)
         self.w = T(q.w)
     }
 
-    public init (_ q:Quaternion<Float>) {
+    public init (_ q: Quaternion<Float>) {
         self.x = T(q.x)
         self.y = T(q.y)
         self.z = T(q.z)
         self.w = T(q.w)
     }
 
-    public init (_ q:Quaternion<T>, _ op:(_:T) -> T) {
+    public init (_ q: Quaternion<T>, _ op:(_:T) -> T) {
         self.x = op(q.x)
         self.y = op(q.y)
         self.z = op(q.z)
         self.w = op(q.w)
     }
 
-    public init (_ s:T, _ q:Quaternion<T>, _ op:(_:T, _:T) -> T) {
+    public init (_ s: T, _ q: Quaternion<T>, _ op:(_:T, _:T) -> T) {
         self.x = op(s, q.x)
         self.y = op(s, q.y)
         self.z = op(s, q.z)
         self.w = op(s, q.w)
     }
 
-    public init (_ q:Quaternion<T>, _ s:T, _ op:(_:T, _:T) -> T) {
+    public init (_ q: Quaternion<T>, _ s: T, _ op:(_:T, _:T) -> T) {
         self.x = op(q.x, s)
         self.y = op(q.y, s)
         self.z = op(q.z, s)
         self.w = op(q.w, s)
     }
 
-    public init (_ q1:Quaternion<T>, _ q2:Quaternion<T>, _ op:(_:T, _:T) -> T) {
+    public init (_ q1: Quaternion<T>, _ q2: Quaternion<T>, _ op:(_:T, _:T) -> T) {
         self.x = op(q1.x, q2.x)
         self.y = op(q1.y, q2.y)
         self.z = op(q1.z, q2.z)
         self.w = op(q1.w, q2.w)
     }
-
 
     public static func ==(q1: Quaternion<T>, q2: Quaternion<T>) -> Bool {
         return q1.x == q2.x && q1.y == q2.y && q1.z == q2.z && q1.w == q2.w

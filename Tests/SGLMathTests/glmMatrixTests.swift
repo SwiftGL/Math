@@ -19,7 +19,6 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-
 import XCTest
 import SGLMath
 
@@ -34,39 +33,39 @@ class SwiftGLglmTests: XCTestCase {
         let v3 = vec3()
         let v4 = vec4()
 
-        let _ = SGLMath.translate(m4, v3)
-        let _ = SGLMath.rotate(m4, 1.1, v3)
-        let _ = SGLMath.rotateSlow(m4, 1.1, v3)
-        let _ = SGLMath.scale(m4, v3)
+        _ = SGLMath.translate(m4, v3)
+        _ = SGLMath.rotate(m4, 1.1, v3)
+        _ = SGLMath.rotateSlow(m4, 1.1, v3)
+        _ = SGLMath.scale(m4, v3)
 
-        let _ = SGLMath.ortho(1,2,3,4,5,6)
-        let _ = SGLMath.ortho(1,2,3,4)
-        let _ = SGLMath.orthoLH(1,2,3,4,5,6)
-        let _ = SGLMath.orthoRH(1,2,3,4,5,6)
+        _ = SGLMath.ortho(1, 2, 3, 4, 5, 6)
+        _ = SGLMath.ortho(1, 2, 3, 4)
+        _ = SGLMath.orthoLH(1, 2, 3, 4, 5, 6)
+        _ = SGLMath.orthoRH(1, 2, 3, 4, 5, 6)
 
-        let _ = SGLMath.frustum(1,2,3,4,5,6)
-        let _ = SGLMath.frustumLH(1,2,3,4,5,6)
-        let _ = SGLMath.frustumRH(1,2,3,4,5,6)
+        _ = SGLMath.frustum(1, 2, 3, 4, 5, 6)
+        _ = SGLMath.frustumLH(1, 2, 3, 4, 5, 6)
+        _ = SGLMath.frustumRH(1, 2, 3, 4, 5, 6)
 
-        let _ = SGLMath.perspective(1,2,3,4)
-        let _ = SGLMath.perspectiveLH(1,2,3,4)
-        let _ = SGLMath.perspectiveRH(1,2,3,4)
+        _ = SGLMath.perspective(1, 2, 3, 4)
+        _ = SGLMath.perspectiveLH(1, 2, 3, 4)
+        _ = SGLMath.perspectiveRH(1, 2, 3, 4)
 
-        let _ = SGLMath.perspectiveFov(1,2,3,4,5)
-        let _ = SGLMath.perspectiveFovLH(1,2,3,4,5)
-        let _ = SGLMath.perspectiveFovRH(1,2,3,4,5)
+        _ = SGLMath.perspectiveFov(1, 2, 3, 4, 5)
+        _ = SGLMath.perspectiveFovLH(1, 2, 3, 4, 5)
+        _ = SGLMath.perspectiveFovRH(1, 2, 3, 4, 5)
 
-        let _ = SGLMath.infinitePerspective(1,2,3)
-        let _ = SGLMath.infinitePerspectiveLH(1,2,3)
-        let _ = SGLMath.infinitePerspectiveRH(1,2,3)
+        _ = SGLMath.infinitePerspective(1, 2, 3)
+        _ = SGLMath.infinitePerspectiveLH(1, 2, 3)
+        _ = SGLMath.infinitePerspectiveRH(1, 2, 3)
 
-        let _ = SGLMath.project(v3, m4, m4, v4)
-        let _ = SGLMath.unproject(v3, m4, m4, v4)
-        let _ = SGLMath.pickMatrix(v2, v2, v4)
+        _ = SGLMath.project(v3, m4, m4, v4)
+        _ = SGLMath.unproject(v3, m4, m4, v4)
+        _ = SGLMath.pickMatrix(v2, v2, v4)
 
-        let _ = SGLMath.lookAt(v3, v3, v3)
-        let _ = SGLMath.lookAtLH(v3, v3, v3)
-        let _ = SGLMath.lookAtRH(v3, v3, v3)
+        _ = SGLMath.lookAt(v3, v3, v3)
+        _ = SGLMath.lookAtLH(v3, v3, v3)
+        _ = SGLMath.lookAtRH(v3, v3, v3)
     }
 
 }

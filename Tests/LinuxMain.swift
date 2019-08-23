@@ -19,7 +19,6 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-
 import XCTest
 @testable import SGLMathTests
 
@@ -30,5 +29,5 @@ XCTMain([
     testCase(FunctionsTests.allTests),
     testCase(Matrix2x2Tests.allTests),
     testCase(Matrix3x3Tests.allTests),
-    testCase(Matrix4x4Tests.allTests),
+    testCase(Matrix4x4Tests.allTests)
 ])
