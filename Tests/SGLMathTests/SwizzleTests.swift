@@ -19,7 +19,6 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-
 import XCTest
 import SGLMath
 
@@ -36,12 +35,12 @@ class SwizzleTests: XCTestCase {
     func test2() {
         var z = vec4(1, 2, 3, 4)
         z.ab = vec2(99, 98)
-        XCTAssertEqual(z.ab, vec2(99,98))
-        XCTAssertEqual(z, vec4(1,2,98,99))
+        XCTAssertEqual(z.ab, vec2(99, 98))
+        XCTAssertEqual(z, vec4(1, 2, 98, 99))
     }
 
     static var allTests = [
         ("test1", test1),
-        ("test2", test2),
+        ("test2", test2)
     ]
 }

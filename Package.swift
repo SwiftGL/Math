@@ -27,13 +27,13 @@ let package = Package(
     name: "SGLMath",
     products: [
         .library(name: "SGLMath", targets: ["SGLMath"]),
-        .executable(name: "swizgen", targets: ["Tools"]),
+        .executable(name: "swizgen", targets: ["Tools"])
     ],
     dependencies: [
     ],
     targets: [
         .target(name: "SGLMath", dependencies: []),
         .target(name: "Tools", dependencies: []),
-        .testTarget(name: "SGLMathTests", dependencies: ["SGLMath"]),
+        .testTarget(name: "SGLMathTests", dependencies: ["SGLMath"])
     ]
 )
