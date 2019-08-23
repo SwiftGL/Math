@@ -20,7 +20,6 @@
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
 public struct Matrix4x3<T: ArithmeticType>: MatrixType {
-
     public typealias Element = T
 
     private var x: Vector3<T>, y: Vector3<T>, z: Vector3<T>, w: Vector3<T>
@@ -61,7 +60,7 @@ public struct Matrix4x3<T: ArithmeticType>: MatrixType {
     public var debugDescription: String {
         return String(describing: type(of: self)) + "(" + [x, y, z, w].map { (v: Vector3<T>) -> String in
             "[" + [v.x, v.y, v.z].map { (n: T) -> String in String(describing: n) }.joined(separator: ", ") + "]"
-            }.joined(separator: ", ") + ")"
+        }.joined(separator: ", ") + ")"
     }
 
     public var hashValue: Int {

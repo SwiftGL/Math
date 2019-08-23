@@ -20,7 +20,6 @@
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
 public struct Quaternion<T: FloatingPointArithmeticType>: MatrixType, ExpressibleByArrayLiteral {
-
     public typealias Element = T
 
     public var x: T, y: T, z: T, w: T

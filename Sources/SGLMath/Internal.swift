@@ -30,7 +30,6 @@
 // The API in this file is unstable and always will be.
 
 public final class SGLMath {
-
     // This is MurmurHash3 by Austin Appleby
     // https://en.wikipedia.org/wiki/MurmurHash
     public static func hash(_ nums: Int...) -> Int {
@@ -336,15 +335,15 @@ public final class SGLMath {
     public static func SGLmodf<T: FloatingPointArithmeticType>(_ x: T, _ i:inout T) -> T {
         if let z = x as? Double {
             return withUnsafeMutablePointer(to: &i) {
-                return $0.withMemoryRebound(to: Double.self, capacity: 1) {
-                    return modf(z, $0) as! T
+                $0.withMemoryRebound(to: Double.self, capacity: 1) {
+                    modf(z, $0) as! T
                 }
             }
         }
         if let z = x as? Float {
             return withUnsafeMutablePointer(to: &i) {
-                return $0.withMemoryRebound(to: Float.self, capacity: 1) {
-                    return modff(z, $0) as! T
+                $0.withMemoryRebound(to: Float.self, capacity: 1) {
+                    modff(z, $0) as! T
                 }
             }
         }
@@ -450,5 +449,4 @@ public final class SGLMath {
         significand += 0x00001000
         return sign + UInt16(exponent >> 13) + UInt16(significand >> 13)
     }
-
 }

@@ -20,7 +20,6 @@
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
 public struct Vector4<T: ArithmeticType>: VectorType {
-
     public typealias Element = T
     public typealias FloatVector = Vector4<Float>
     public typealias DoubleVector = Vector4<Double>
@@ -30,15 +29,15 @@ public struct Vector4<T: ArithmeticType>: VectorType {
 
     public var x: T, y: T, z: T, w: T
 
-    public var r: T { get {return x} set {x = newValue} }
-    public var g: T { get {return y} set {y = newValue} }
-    public var b: T { get {return z} set {z = newValue} }
-    public var a: T { get {return w} set {w = newValue} }
+    public var r: T { get { return x } set { x = newValue } }
+    public var g: T { get { return y } set { y = newValue } }
+    public var b: T { get { return z } set { z = newValue } }
+    public var a: T { get { return w } set { w = newValue } }
 
-    public var s: T { get {return x} set {x = newValue} }
-    public var t: T { get {return y} set {y = newValue} }
-    public var p: T { get {return z} set {z = newValue} }
-    public var q: T { get {return w} set {w = newValue} }
+    public var s: T { get { return x } set { x = newValue } }
+    public var t: T { get { return y } set { y = newValue } }
+    public var p: T { get { return z } set { z = newValue } }
+    public var q: T { get { return w } set { w = newValue } }
 
     public var elements: [Element] {
         return [x, y, z, w]

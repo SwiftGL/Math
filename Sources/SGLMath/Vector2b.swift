@@ -20,16 +20,15 @@
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
 public struct Vector2b: BooleanVectorType {
-
     public typealias BooleanVector = Vector2b
 
     public var x: Bool, y: Bool
 
-    public var r: Bool { get {return x} set {x = newValue} }
-    public var g: Bool { get {return y} set {y = newValue} }
+    public var r: Bool { get { return x } set { x = newValue } }
+    public var g: Bool { get { return y } set { y = newValue } }
 
-    public var s: Bool { get {return x} set {x = newValue} }
-    public var t: Bool { get {return y} set {y = newValue} }
+    public var s: Bool { get { return x } set { x = newValue } }
+    public var t: Bool { get { return y } set { y = newValue } }
 
     public var elements: [Bool] {
         return [x, y]

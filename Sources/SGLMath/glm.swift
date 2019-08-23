@@ -58,7 +58,6 @@ public typealias imat4x4 = Matrix4x4<Int32>
 public typealias umat4x4 = Matrix4x4<UInt32>
 
 extension SGLMath {
-
     public static func translate<T>(_ m: Matrix4x4<T>, _ v: Vector3<T>) -> Matrix4x4<T> {
         var m3: Vector4<T> = m[0] * v[0]
         m3 += m[1] * v[1]
@@ -73,7 +72,7 @@ extension SGLMath {
         let c = SGLMath.SGLcos(a)
         let s = SGLMath.SGLsin(a)
         let axis = normalize(v)
-        let temp = (1-c) * axis
+        let temp = (1 - c) * axis
         var r00: T = c
             r00 += temp[0] * axis[0]
         var r01: T = temp[0] * axis[1]
@@ -143,7 +142,6 @@ extension SGLMath {
             r20, r21, r22, 0,
             0, 0, 0, 1
         )
-
     }
 
     public static func scale<T>(_ m: Matrix4x4<T>, _ v: Vector3<T>) -> Matrix4x4<T> {
@@ -162,7 +160,6 @@ extension SGLMath {
         } else {
             return orthoRH(left, right, bottom, top, zNear, zFar)
         }
-
     }
 
     public static func ortho<T: FloatingPointArithmeticType>
@@ -262,7 +259,6 @@ extension SGLMath {
             r20, r21, r22, 1,
             0, 0, r32, 0
         )
-
     }
 
     public static func frustumRH<T: FloatingPointArithmeticType>
@@ -289,7 +285,6 @@ extension SGLMath {
             r20, r21, r22, -1,
             0, 0, r32, 0
         )
-
     }
 
     public static func perspective<T: FloatingPointArithmeticType>
@@ -326,7 +321,6 @@ extension SGLMath {
             0, 0, r22, 1,
             0, 0, r32, 0
         )
-
     }
 
     public static func perspectiveRH<T: FloatingPointArithmeticType>
@@ -390,7 +384,6 @@ extension SGLMath {
             0, 0, r22, -1,
             0, 0, r32, 0
         )
-
     }
 
     public static func perspectiveFovRH<T: FloatingPointArithmeticType>
@@ -446,8 +439,10 @@ extension SGLMath {
             switch(ep) {
             case is Float:
                 r22 = T(0x1.fffffep-1)
+
             case is Double:
                 r22 = T(0x1.fffffffffffffp-1)
+
             default:
                 preconditionFailure()
             }
@@ -461,7 +456,6 @@ extension SGLMath {
             0, 0, r22, 1,
             0, 0, r32, 0
         )
-
     }
 
     public static func infinitePerspectiveRH<T: FloatingPointArithmeticType>
@@ -481,8 +475,10 @@ extension SGLMath {
             switch(ep) {
             case is Float:
                 r22 = T(-0x1.fffffep-1)
+
             case is Double:
                 r22 = T(-0x1.fffffffffffffp-1)
+
             default:
                 preconditionFailure()
             }
@@ -496,7 +492,6 @@ extension SGLMath {
             0, 0, r22, -1,
             0, 0, r32, 0
         )
-
     }
 
     public static func project<T>
@@ -568,7 +563,6 @@ extension SGLMath {
             s.z, u.z, f.z, 0,
             r30, r31, r32, 1
         )
-
     }
 
     public static func lookAtRH<T: FloatingPointArithmeticType>
@@ -579,7 +573,7 @@ extension SGLMath {
 
         let r30: T = -dot(s, eye)
         let r31: T = -dot(u, eye)
-        let r32: T =  dot(f, eye)
+        let r32: T = dot(f, eye)
 
         return Matrix4x4<T>(
             s.x, u.x, -f.x, 0,
@@ -588,5 +582,4 @@ extension SGLMath {
             r30, r31, r32, 1
         )
     }
-
 }

@@ -20,20 +20,19 @@
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
 public struct Vector4b: BooleanVectorType {
-
     public typealias BooleanVector = Vector4b
 
     public var x: Bool, y: Bool, z: Bool, w: Bool
 
-    public var r: Bool { get {return x} set {x = newValue} }
-    public var g: Bool { get {return y} set {y = newValue} }
-    public var b: Bool { get {return z} set {z = newValue} }
-    public var a: Bool { get {return w} set {w = newValue} }
+    public var r: Bool { get { return x } set { x = newValue } }
+    public var g: Bool { get { return y } set { y = newValue } }
+    public var b: Bool { get { return z } set { z = newValue } }
+    public var a: Bool { get { return w } set { w = newValue } }
 
-    public var s: Bool { get {return x} set {x = newValue} }
-    public var t: Bool { get {return y} set {y = newValue} }
-    public var p: Bool { get {return z} set {z = newValue} }
-    public var q: Bool { get {return w} set {w = newValue} }
+    public var s: Bool { get { return x } set { x = newValue } }
+    public var t: Bool { get { return y } set { y = newValue } }
+    public var p: Bool { get { return z } set { z = newValue } }
+    public var q: Bool { get { return w } set { w = newValue } }
 
     public var elements: [Bool] {
         return [x, y, z, w]

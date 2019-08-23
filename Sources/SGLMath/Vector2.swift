@@ -20,7 +20,6 @@
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
 public struct Vector2<T: ArithmeticType>: VectorType {
-
     public typealias Element = T
     public typealias FloatVector = Vector2<Float>
     public typealias DoubleVector = Vector2<Double>
@@ -30,11 +29,11 @@ public struct Vector2<T: ArithmeticType>: VectorType {
 
     public var x: T, y: T
 
-    public var r: T { get {return x} set {x = newValue} }
-    public var g: T { get {return y} set {y = newValue} }
+    public var r: T { get { return x } set { x = newValue } }
+    public var g: T { get { return y } set { y = newValue } }
 
-    public var s: T { get {return x} set {x = newValue} }
-    public var t: T { get {return y} set {y = newValue} }
+    public var s: T { get { return x } set { x = newValue } }
+    public var t: T { get { return y } set { y = newValue } }
 
     public var elements: [Element] {
         return [x, y]

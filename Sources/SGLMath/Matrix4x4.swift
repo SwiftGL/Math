@@ -24,7 +24,6 @@ import simd
 #endif
 
 public struct Matrix4x4<T: ArithmeticType>: MatrixType {
-
     public typealias Element = T
 
     private var x: Vector4<T>, y: Vector4<T>, z: Vector4<T>, w: Vector4<T>

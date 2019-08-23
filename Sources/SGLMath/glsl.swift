@@ -72,7 +72,7 @@ public typealias dmat4x4 = Matrix4x4<Double>
 // Section 8.1 Angle and Trignometry Functions
 
 public func radians<T: FloatingPointArithmeticType>(_ degrees: T) -> T {
-    return degrees * 0.017453292519943295
+    return degrees * 0.017_453_292_519_943_295
 }
 
 public func radians<genType: VectorType>(_ degrees: genType) -> genType where genType.Element: FloatingPointArithmeticType {
@@ -80,7 +80,7 @@ public func radians<genType: VectorType>(_ degrees: genType) -> genType where ge
 }
 
 public func degrees<T: FloatingPointArithmeticType>(_ radians: T) -> T {
-    return radians * 57.29577951308232
+    return radians * 57.295_779_513_082_32
 }
 
 public func degrees<genType: VectorType>(_ radians: genType) -> genType where genType.Element: FloatingPointArithmeticType {
@@ -224,8 +224,10 @@ public func fract<T: VectorType>(_ x: T) -> T where T.Element: FloatingPointArit
     switch(x) {
     case is Float:
         one_minus_ulp = T.Element(0x1.fffffep-1)
+
     case is Double:
         one_minus_ulp = T.Element(0x1.fffffffffffffp-1)
+
     default:
         preconditionFailure()
     }
@@ -281,25 +283,25 @@ public func mix<genType: VectorType>(_ x: genType, _ y: genType, _ a: genType) -
 
 public func mix<genType: VectorType>(_ x: genType, _ y: genType, _ a: genType.Element) -> genType {
     let inv = 1 - a
-    return genType(x, y) {$0 * inv + $1 * a}
+    return genType(x, y) { $0 * inv + $1 * a }
 }
 
 public func mix<genType: VectorType, genBType: BooleanVectorType>(_ x: genType, _ y: genType, _ a: genBType) -> genType where genType.BooleanVector == genBType.BooleanVector {
-    return genType(x, y, a) {$2 ? $1 : $0}
+    return genType(x, y, a) { $2 ? $1 : $0 }
 }
 
 public func step<genType: VectorType>(_ edge: genType, _ x: genType) -> genType {
-    return genType(edge, x) { $1 < $0 ? 0 : 1}
+    return genType(edge, x) { $1 < $0 ? 0 : 1 }
 }
 
 public func step<genType: VectorType>(_ edge: genType.Element, _ x: genType) -> genType {
-    return genType(x) { $0 < edge ? 0 : 1}
+    return genType(x) { $0 < edge ? 0 : 1 }
 }
 
 public func smoothstep<genType: VectorType>(_ edge0: genType, _ edge1: genType, _ x: genType) -> genType where genType.Element: FloatingPointArithmeticType {
-    return genType(edge0, edge1, x) { (edge0, edge1, x) in
-        var i = x-edge0
-        i /= edge1-edge0
+    return genType(edge0, edge1, x) { edge0, edge1, x in
+        var i = x - edge0
+        i /= edge1 - edge0
         let t = min(max( i, 0), 1)
         i = 3 - 2 * t
         return t * t * i
@@ -307,9 +309,9 @@ public func smoothstep<genType: VectorType>(_ edge0: genType, _ edge1: genType, 
 }
 
 public func smoothstep<genType: VectorType>(_ edge0: genType.Element, _ edge1: genType.Element, _ x: genType) -> genType where genType.Element: FloatingPointArithmeticType {
-    return genType(x) { (x) in
-        var i = x-edge0
-        i /= edge1-edge0
+    return genType(x) { x in
+        var i = x - edge0
+        i /= edge1 - edge0
         let t = min(max( i, 0), 1)
         i = 3 - 2 * t
         return t * t * i
@@ -317,11 +319,11 @@ public func smoothstep<genType: VectorType>(_ edge0: genType.Element, _ edge1: g
 }
 
 public func isnan<genType: VectorType>(_ x: genType) -> genType.BooleanVector where genType.Element: FloatingPoint, genType.BooleanVector: BooleanVectorType, genType.BooleanVector == genType.BooleanVector.BooleanVector {
-    return genType.BooleanVector(x) {$0.isNaN}
+    return genType.BooleanVector(x) { $0.isNaN }
 }
 
 public func isinf<genType: VectorType>(_ x: genType) -> genType.BooleanVector where genType.Element: FloatingPoint, genType.BooleanVector: BooleanVectorType, genType.BooleanVector == genType.BooleanVector.BooleanVector {
-    return genType.BooleanVector(x) {$0.isInfinite}
+    return genType.BooleanVector(x) { $0.isInfinite }
 }
 
 public func floatBitsToInt<genType: VectorType>(_ value: genType) -> genType.Int32Vector where genType.Int32Vector: VectorType, genType.Element == Float, genType.BooleanVector == genType.Int32Vector.BooleanVector {
@@ -441,7 +443,7 @@ public func unpackDouble2x32(_ v: Double) -> uvec2 {
 }
 
 public func packHalf2x16(_ v: vec2) -> UInt32 {
-    var ret: UInt32 = UInt32(SGLMath.halfFromFloat(v[0]))
+    var ret = UInt32(SGLMath.halfFromFloat(v[0]))
     ret += UInt32(SGLMath.halfFromFloat(v[1])) << 16
     return ret
 }
@@ -449,7 +451,7 @@ public func packHalf2x16(_ v: vec2) -> UInt32 {
 public func unpackHalf2x16(_ v: UInt32) -> vec2 {
     return vec2 (
         SGLMath.floatFromHalf( UInt16(v & 0xFFFF) ),
-        SGLMath.floatFromHalf( UInt16((v>>16) & 0xFFFF) )
+        SGLMath.floatFromHalf( UInt16((v >> 16) & 0xFFFF) )
     )
 }
 
@@ -469,16 +471,19 @@ public func dot<genType: VectorType>(_ x: genType, _ y: genType) -> genType.Elem
         let xx = x as! Vector2<genType.Element>
         let yy = y as! Vector2<genType.Element>
         return xx.x * yy.x + xx.y * yy.y
+
     case is Vector3<genType.Element>:
         let xx = x as! Vector3<genType.Element>
         let yy = y as! Vector3<genType.Element>
         let z = xx.x * yy.x + xx.y * yy.y
         return z + xx.z * yy.z
+
     case is Vector4<genType.Element>:
         let xx = x as! Vector4<genType.Element>
         let yy = y as! Vector4<genType.Element>
         let z = xx.x * yy.x + xx.y * yy.y
         return z + xx.z * yy.z + xx.w * yy.w
+
     default:
         preconditionFailure()
     }

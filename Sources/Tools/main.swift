@@ -1,4 +1,4 @@
-#!/usr/bin/env swift
+#!/usr / bin / env swift
 
 // Copyright (c) 2015-2016 David Turnbull
 //
@@ -25,7 +25,7 @@ import Foundation
 
 extension OutputStream {
     func write(_ string: String) {
-        if string.isEmpty {return}
+        if string.isEmpty { return }
         let encodedDataArray = [UInt8](string.utf8)
         _ = write(encodedDataArray, maxLength: encodedDataArray.count)
     }
@@ -72,11 +72,11 @@ func writeSwizzle(_ out: OutputStream) {
         for vnameNum in 0...1 {
             out.write("public extension \(vname[vecNum])\(vtype[vnameNum]) {\n")
             var suff = vtype[vnameNum]
-            if suff != "b" { suff += "<T>"}
+            if suff != "b" { suff += "<T>" }
             for e0 in 0...2 {
                 for e1 in 0..<vecNum {
                     for e2 in 0..<vecNum {
-                        if (e2 == e1) {continue}
+                        if (e2 == e1) { continue }
 
                         out.write("    public var \(e[e0][e1])\(e[e0][e2]):Vector2\(suff) { ")
                         out.write("get { return Vector2\(suff)(\(e[0][e1]),\(e[0][e2])) } ")
@@ -84,7 +84,7 @@ func writeSwizzle(_ out: OutputStream) {
                         out.write("}\n")
 
                         for e3 in 0..<vecNum {
-                            if (vecNum < 3 || e3 == e1 || e3 == e2) {continue}
+                            if (vecNum < 3 || e3 == e1 || e3 == e2) { continue }
 
                             out.write("    public var \(e[e0][e1])\(e[e0][e2])\(e[e0][e3]):Vector3\(suff) { ")
                             out.write("get { return Vector3\(suff)(\(e[0][e1]),\(e[0][e2]),\(e[0][e3])) } ")
@@ -92,13 +92,12 @@ func writeSwizzle(_ out: OutputStream) {
                             out.write("}\n")
 
                             for e4 in 0..<vecNum {
-                                if (vecNum < 4 || e4 == e1 || e4 == e2 || e4 == e3) {continue}
+                                if (vecNum < 4 || e4 == e1 || e4 == e2 || e4 == e3) { continue }
 
                                 out.write("    public var \(e[e0][e1])\(e[e0][e2])\(e[e0][e3])\(e[e0][e4]):Vector4\(suff) { ")
                                 out.write("get { return Vector4\(suff)(\(e[0][e1]),\(e[0][e2]),\(e[0][e3]),\(e[0][e4])) } ")
                                 out.write("set { \(e[0][e1]) = newValue.x; \(e[0][e2]) = newValue.y; \(e[0][e3]) = newValue.z; \(e[0][e4]) = newValue.w } ")
                                 out.write("}\n")
-
                             }
                         }
                     }

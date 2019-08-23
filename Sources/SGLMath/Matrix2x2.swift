@@ -24,7 +24,6 @@ import simd
 #endif
 
 public struct Matrix2x2<T: ArithmeticType>: MatrixType {
-
     public typealias Element = T
 
     private var x: Vector2<T>, y: Vector2<T>
@@ -61,7 +60,7 @@ public struct Matrix2x2<T: ArithmeticType>: MatrixType {
     public var debugDescription: String {
         return String(describing: type(of: self)) + "(" + [x, y].map { (v: Vector2<T>) -> String in
             "[" + [v.x, v.y].map { (n: T) -> String in String(describing: n) }.joined(separator: ", ") + "]"
-            }.joined(separator: ", ") + ")"
+        }.joined(separator: ", ") + ")"
     }
 
     public var hashValue: Int {
@@ -226,7 +225,7 @@ public struct Matrix2x2<T: ArithmeticType>: MatrixType {
             }
         #endif
         let invdet: T = 1 / determinant
-        return invdet * Matrix2x2<T>(self.y.y, 0-self.x.y, 0-self.y.x, self.x.x)
+        return invdet * Matrix2x2<T>(self.y.y, 0 - self.x.y, 0 - self.y.x, self.x.x)
     }
 
     public var determinant: T {

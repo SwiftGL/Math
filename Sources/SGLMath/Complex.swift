@@ -32,7 +32,6 @@ extension Float {
 }
 
 public struct Complex<T: FloatingPointArithmeticType>: MatrixType, ExpressibleByFloatLiteral, ExpressibleByIntegerLiteral, ExpressibleByArrayLiteral {
-
     public typealias Element = T
 
     public var real: T
@@ -119,7 +118,6 @@ public struct Complex<T: FloatingPointArithmeticType>: MatrixType, ExpressibleBy
     public init(rho: T, theta: T) {
         self.real = rho * SGLMath.SGLcos(theta)
         self.imag = rho * SGLMath.SGLsin(theta)
-
     }
 
     public var abs: T {
@@ -159,7 +157,7 @@ public struct Complex<T: FloatingPointArithmeticType>: MatrixType, ExpressibleBy
         self.imag = op(x1[1], x2[1])
     }
 
-    public static func==(x: Complex<T>, y: Complex<T>) -> Bool {
+    public static func == (x: Complex<T>, y: Complex<T>) -> Bool {
         return x.real == y.real && x.imag == y.imag
     }
 
