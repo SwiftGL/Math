@@ -21,7 +21,7 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-public extension Vector2 {
+extension Vector2 {
     public var xy: Vector2<T> { get { return Vector2<T>(x, y) } set { x = newValue.x; y = newValue.y } }
     public var yx: Vector2<T> { get { return Vector2<T>(y, x) } set { y = newValue.x; x = newValue.y } }
     public var rg: Vector2<T> { get { return Vector2<T>(x, y) } set { x = newValue.x; y = newValue.y } }
@@ -30,7 +30,7 @@ public extension Vector2 {
     public var ts: Vector2<T> { get { return Vector2<T>(y, x) } set { y = newValue.x; x = newValue.y } }
 }
 
-public extension Vector2b {
+extension Vector2b {
     public var xy: Vector2b { get { return Vector2b(x, y) } set { x = newValue.x; y = newValue.y } }
     public var yx: Vector2b { get { return Vector2b(y, x) } set { y = newValue.x; x = newValue.y } }
     public var rg: Vector2b { get { return Vector2b(x, y) } set { x = newValue.x; y = newValue.y } }
@@ -39,7 +39,7 @@ public extension Vector2b {
     public var ts: Vector2b { get { return Vector2b(y, x) } set { y = newValue.x; x = newValue.y } }
 }
 
-public extension Vector3 {
+extension Vector3 {
     public var xy: Vector2<T> { get { return Vector2<T>(x, y) } set { x = newValue.x; y = newValue.y } }
     public var xyz: Vector3<T> { get { return Vector3<T>(x, y, z) } set { x = newValue.x; y = newValue.y; z = newValue.z } }
     public var xz: Vector2<T> { get { return Vector2<T>(x, z) } set { x = newValue.x; z = newValue.y } }
@@ -78,7 +78,7 @@ public extension Vector3 {
     public var pts: Vector3<T> { get { return Vector3<T>(z, y, x) } set { z = newValue.x; y = newValue.y; x = newValue.z } }
 }
 
-public extension Vector3b {
+extension Vector3b {
     public var xy: Vector2b { get { return Vector2b(x, y) } set { x = newValue.x; y = newValue.y } }
     public var xyz: Vector3b { get { return Vector3b(x, y, z) } set { x = newValue.x; y = newValue.y; z = newValue.z } }
     public var xz: Vector2b { get { return Vector2b(x, z) } set { x = newValue.x; z = newValue.y } }
@@ -117,7 +117,7 @@ public extension Vector3b {
     public var pts: Vector3b { get { return Vector3b(z, y, x) } set { z = newValue.x; y = newValue.y; x = newValue.z } }
 }
 
-public extension Vector4 {
+extension Vector4 {
     public var xy: Vector2<T> { get { return Vector2<T>(x, y) } set { x = newValue.x; y = newValue.y } }
     public var xyz: Vector3<T> { get { return Vector3<T>(x, y, z) } set { x = newValue.x; y = newValue.y; z = newValue.z } }
     public var xyzw: Vector4<T> { get { return Vector4<T>(x, y, z, w) } set { x = newValue.x; y = newValue.y; z = newValue.z; w = newValue.w } }
@@ -300,7 +300,7 @@ public extension Vector4 {
     public var qpts: Vector4<T> { get { return Vector4<T>(w, z, y, x) } set { w = newValue.x; z = newValue.y; y = newValue.z; x = newValue.w } }
 }
 
-public extension Vector4b {
+extension Vector4b {
     public var xy: Vector2b { get { return Vector2b(x, y) } set { x = newValue.x; y = newValue.y } }
     public var xyz: Vector3b { get { return Vector3b(x, y, z) } set { x = newValue.x; y = newValue.y; z = newValue.z } }
     public var xyzw: Vector4b { get { return Vector4b(x, y, z, w) } set { x = newValue.x; y = newValue.y; z = newValue.z; w = newValue.w } }
