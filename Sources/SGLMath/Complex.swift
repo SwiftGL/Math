@@ -70,8 +70,8 @@ public struct Complex<T: FloatingPointArithmeticType>: MatrixType, ExpressibleBy
         }
     }
 
-    public var hashValue: Int {
-        return SGLMath.hash(real.hashValue, imag.hashValue)
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(SGLMath.hash(real.hashValue, imag.hashValue))
     }
 
     public init() {

@@ -67,8 +67,8 @@ public struct Vector4b: BooleanVectorType {
         return String(describing: type(of: self)) + "(\(x), \(y), \(z), \(w))"
     }
 
-    public var hashValue: Int {
-        return SGLMath.hash(x.hashValue, y.hashValue, z.hashValue, w.hashValue)
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(SGLMath.hash(x.hashValue, y.hashValue, z.hashValue, w.hashValue))
     }
 
     public init () {

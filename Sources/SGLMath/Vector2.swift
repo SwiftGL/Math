@@ -64,8 +64,8 @@ public struct Vector2<T: ArithmeticType>: VectorType {
         return String(describing: type(of: self)) + "(\(x), \(y))"
     }
 
-    public var hashValue: Int {
-        return SGLMath.hash(x.hashValue, y.hashValue)
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(SGLMath.hash(x.hashValue, y.hashValue))
     }
 
     public init () {

@@ -63,8 +63,8 @@ public struct Matrix2x4<T: ArithmeticType>: MatrixType {
         }.joined(separator: ", ") + ")"
     }
 
-    public var hashValue: Int {
-        return SGLMath.hash(x.hashValue, y.hashValue)
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(SGLMath.hash(x.hashValue, y.hashValue))
     }
 
     public init() {

@@ -57,8 +57,8 @@ public struct Quaternion<T: FloatingPointArithmeticType>: MatrixType, Expressibl
         return String(describing: type(of: self)) + "(x:\(x), y:\(y), z:\(z), w:\(w))"
     }
 
-    public var hashValue: Int {
-        return SGLMath.hash(x.hashValue, y.hashValue, z.hashValue, w.hashValue)
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(SGLMath.hash(x.hashValue, y.hashValue, z.hashValue, w.hashValue))
     }
 
     public init () {
