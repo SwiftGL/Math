@@ -19,7 +19,7 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-#if !os(Linux)
+#if canImport(simd)
 import simd
 #endif
 
@@ -280,7 +280,7 @@ public struct Matrix4x4<T: ArithmeticType>: MatrixType {
     }
 
     public var inverse: Matrix4x4<T> {
-        #if !os(Linux)
+        #if canImport(simd)
             if T.self == Float.self {
                 return unsafeBitCast(unsafeBitCast(self, to: float4x4.self).inverse, to: Matrix4x4<T>.self)
             }
@@ -431,7 +431,7 @@ public struct Matrix4x4<T: ArithmeticType>: MatrixType {
     }
 
     public static func *(v: Vector4<T>, m: Matrix4x4<T>) -> Vector4<T> {
-        #if !os(Linux)
+        #if canImport(simd)
             if T.self == Float.self {
                 return unsafeBitCast(unsafeBitCast(v, to: float4.self) * unsafeBitCast(m, to: float4x4.self), to: Vector4<T>.self)
             }
@@ -459,7 +459,7 @@ public struct Matrix4x4<T: ArithmeticType>: MatrixType {
     }
 
     public static func *(m: Matrix4x4<T>, v: Vector4<T>) -> Vector4<T> {
-        #if !os(Linux)
+        #if canImport(simd)
             if T.self == Float.self {
                 return unsafeBitCast(unsafeBitCast(m, to: float4x4.self) * unsafeBitCast(v, to: float4.self), to: Vector4<T>.self)
             }
@@ -475,7 +475,7 @@ public struct Matrix4x4<T: ArithmeticType>: MatrixType {
     }
 
     public static func *(m1: Matrix4x4<T>, m2: Matrix2x4<T>) -> Matrix2x4<T> {
-        #if !os(Linux)
+        #if canImport(simd)
             if T.self == Float.self {
                 return unsafeBitCast(unsafeBitCast(m1, to: float4x4.self) * unsafeBitCast(m2, to: float2x4.self), to: Matrix2x4<T>.self)
             }
@@ -495,7 +495,7 @@ public struct Matrix4x4<T: ArithmeticType>: MatrixType {
     }
 
     public static func *(m1: Matrix4x4<T>, m2: Matrix3x4<T>) -> Matrix3x4<T> {
-        #if !os(Linux)
+        #if canImport(simd)
             if T.self == Float.self {
                 return unsafeBitCast(unsafeBitCast(m1, to: float4x4.self) * unsafeBitCast(m2, to: float3x4.self), to: Matrix3x4<T>.self)
             }
@@ -519,7 +519,7 @@ public struct Matrix4x4<T: ArithmeticType>: MatrixType {
     }
 
     public static func *(m1: Matrix4x4<T>, m2: Matrix4x4<T>) -> Matrix4x4<T> {
-        #if !os(Linux)
+        #if canImport(simd)
             if T.self == Float.self {
                 return unsafeBitCast(unsafeBitCast(m1, to: float4x4.self) * unsafeBitCast(m2, to: float4x4.self), to: Matrix4x4<T>.self)
             }
