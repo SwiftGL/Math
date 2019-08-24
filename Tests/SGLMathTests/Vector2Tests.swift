@@ -19,7 +19,6 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-
 import XCTest
 import SGLMath
 
@@ -54,6 +53,6 @@ class Vector2Tests: XCTestCase {
     static var allTests = [
         ("test1", test1),
         ("test2", test2),
-        ("test3", test3),
+        ("test3", test3)
     ]
 }

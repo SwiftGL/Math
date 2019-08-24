@@ -19,7 +19,6 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-
 import XCTest
 import SGLMath
 
@@ -31,11 +30,9 @@ class FunctionsTests: XCTestCase {
         let vn = bvec4(false, false, true, false)
         XCTAssertEqual(isnan(vf), vn)
 
-
         let vi = bvec4(true, false, false, false)
         XCTAssertEqual(isinf(vf), vi)
     }
-
 
     func testPackNorm() {
         let v2i = vec2(-0.7, 0.4)
@@ -74,6 +71,6 @@ class FunctionsTests: XCTestCase {
         ("testIsNanIsInf", testIsNanIsInf),
         ("testPackNorm", testPackNorm),
         ("testPackDouble", testPackDouble),
-        ("testPackHalf", testPackHalf),
+        ("testPackHalf", testPackHalf)
     ]
 }

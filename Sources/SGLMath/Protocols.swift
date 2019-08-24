@@ -19,8 +19,7 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-
-public protocol ArithmeticType : Numeric, Hashable, Strideable {
+public protocol ArithmeticType: Numeric, Hashable, Strideable {
     init(_: Double)
     init(_: Float)
     init(_: Int)
@@ -39,7 +38,7 @@ public protocol ArithmeticType : Numeric, Hashable, Strideable {
     static func %=(_: inout Self, _: Self)
 }
 
-public protocol FloatingPointArithmeticType : ArithmeticType, FloatingPoint, ExpressibleByFloatLiteral {}
+public protocol FloatingPointArithmeticType: ArithmeticType, FloatingPoint, ExpressibleByFloatLiteral {}
 extension Double: FloatingPointArithmeticType {
     public static func %(a: Double, b: Double) -> Double {
         return a.remainder(dividingBy: b)
@@ -58,7 +57,7 @@ extension Float: FloatingPointArithmeticType {
 }
 
 // Swift didn't put these in BitwiseOperationsType
-public protocol BitsOperationsType : ArithmeticType, BinaryInteger {
+public protocol BitsOperationsType: ArithmeticType, BinaryInteger {
 }
 extension Int: BitsOperationsType {}
 extension UInt: BitsOperationsType {}
@@ -71,10 +70,9 @@ extension UInt32: BitsOperationsType {}
 extension Int64: BitsOperationsType {}
 extension UInt64: BitsOperationsType {}
 
-
 // Anything not a plain single scalar is considered a Matrix.
 // This includes Vectors, Complex, and Quaternion.
-public protocol MatrixType : Hashable, CustomDebugStringConvertible, Sequence where Element:ArithmeticType {
+public protocol MatrixType: Hashable, CustomDebugStringConvertible, Sequence where Element: ArithmeticType {
     init()
     init(_: Self, _:(_:Element) -> Element)
     init(_: Self, _: Self, _:(_:Element, _:Element) -> Element)
@@ -109,7 +107,7 @@ public protocol MatrixType : Hashable, CustomDebugStringConvertible, Sequence wh
 }
 
 // This protocol is only Vector2, Vector3, and Vector4
-public protocol VectorType : MatrixType, ExpressibleByArrayLiteral {
+public protocol VectorType: MatrixType, ExpressibleByArrayLiteral {
     associatedtype FloatVector
     associatedtype DoubleVector
     associatedtype Int32Vector
@@ -117,14 +115,14 @@ public protocol VectorType : MatrixType, ExpressibleByArrayLiteral {
     associatedtype BooleanVector
     // T.BooleanVector == BooleanVector : Must use this key with mixed types.
     subscript(_:Int) -> Element { get set }
-    init<T:VectorType>(_: T, _:(_:T.Element) -> Element) where T.BooleanVector == BooleanVector
-    init<T1:VectorType, T2:VectorType>(_:T1, _:T2, _:(_:T1.Element, _:T2.Element) -> Element) where
+    init<T: VectorType>(_: T, _:(_:T.Element) -> Element) where T.BooleanVector == BooleanVector
+    init<T1: VectorType, T2: VectorType>(_:T1, _:T2, _:(_:T1.Element, _:T2.Element) -> Element) where
         T1.BooleanVector == BooleanVector, T2.BooleanVector == BooleanVector
-    init<T1:VectorType, T2:VectorType>(_:T1, _:inout T2, _:(_:T1.Element, _:inout T2.Element) -> Element) where
+    init<T1: VectorType, T2: VectorType>(_:T1, _:inout T2, _:(_:T1.Element, _:inout T2.Element) -> Element) where
         T1.BooleanVector == BooleanVector, T2.BooleanVector == BooleanVector
-    init<T1:VectorType, T2:VectorType, T3:VectorType>(_:T1, _:T2, _:T3, _:(_:T1.Element, _:T2.Element, _:T3.Element) -> Element) where
+    init<T1: VectorType, T2: VectorType, T3: VectorType>(_:T1, _:T2, _:T3, _:(_:T1.Element, _:T2.Element, _:T3.Element) -> Element) where
         T1.BooleanVector == BooleanVector, T2.BooleanVector == BooleanVector, T3.BooleanVector == BooleanVector
-    init<T1:VectorType, T2:VectorType, T3:BooleanVectorType>(_:T1, _:T2, _:T3, _:(_:T1.Element, _:T2.Element, _:Bool) -> Element) where
+    init<T1: VectorType, T2: VectorType, T3: BooleanVectorType>(_:T1, _:T2, _:T3, _:(_:T1.Element, _:T2.Element, _:Bool) -> Element) where
         T1.BooleanVector == BooleanVector, T2.BooleanVector == BooleanVector, T3.BooleanVector == BooleanVector
     static func *(_: Self, _: Self) -> Self
     static func *=(_: inout Self, _: Self)
@@ -133,11 +131,11 @@ public protocol VectorType : MatrixType, ExpressibleByArrayLiteral {
 }
 
 // This protocol is only Vector2b, Vector3b, and Vector4b
-public protocol BooleanVectorType : Hashable, CustomDebugStringConvertible, Sequence {
+public protocol BooleanVectorType: Hashable, CustomDebugStringConvertible, Sequence {
     associatedtype BooleanVector
     subscript(_:Int) -> Bool { get set }
     init(_: Self, _:(_:Bool) -> Bool)
-    init<T:VectorType>(_: T, _:(_:T.Element) -> Bool) where T.BooleanVector == BooleanVector
-    init<T1:VectorType, T2:VectorType>(_:T1, _:T2, _:(_:T1.Element, _:T2.Element) -> Bool) where
+    init<T: VectorType>(_: T, _:(_:T.Element) -> Bool) where T.BooleanVector == BooleanVector
+    init<T1: VectorType, T2: VectorType>(_:T1, _:T2, _:(_:T1.Element, _:T2.Element) -> Bool) where
         T1.BooleanVector == BooleanVector, T2.BooleanVector == BooleanVector
 }

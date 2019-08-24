@@ -19,7 +19,6 @@
 // TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
 // MATERIALS OR THE USE OR OTHER DEALINGS IN THE MATERIALS.
 
-
 import XCTest
 import SGLMath
 
@@ -80,6 +79,6 @@ class Matrix2x2Tests: XCTestCase {
         ("testIdentityInits", testIdentityInits),
         ("testCommmonInits", testCommmonInits),
         ("testDivide", testDivide),
-        ("testMultiplyVector", testMultiplyVector),
+        ("testMultiplyVector", testMultiplyVector)
     ]
 }
